@@ -1,12 +1,12 @@
-const { User, Link } = require('./models');
+const { User, Link } = require('../models');
 const { GraphQLError } = require('graphql');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
-    me: async (parent, args, context) => {
-      if (context.user) {
-        const userData = await User.findOne({ _id: context.user._id })
+    me: async (parent, args, contextValue) => {
+      if (contextValue.user) {
+        const userData = await User.findOne({ _id: contextValue.user._id })
           .select('-__v -password')
           .populate('links');
   
@@ -22,6 +22,11 @@ const resolvers = {
         .select('-__v -password')
         .populate('links');
     },
+    users: async () => {
+      return User.find()
+        .select('-__v -password')
+        .populate('links');
+		},
     links: async (parent, { username }) => {
       const params = username ? { username } : {};
       return Link.find();
@@ -40,8 +45,8 @@ const resolvers = {
       const user = await User.findOne({ email });
 
       if (!user) {
-        throw new GraphQLError('Incorrect credentials.', {
-          extensions: { code: 'UNAUTHENTICATED' },
+        throw new GraphQLError('User not found.', {
+          extensions: { code: 'NOT_FOUND' },
         });
       }
 
@@ -56,15 +61,15 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    addLink: async (parent, args, context) => {
-      if (context.user) {
+    addLink: async (parent, args, contextValue) => {
+      if (contextValue.user) {
         const link = await Link.create({
           ...args,
-          username: context.user.username,
+          username: contextValue.user.username,
         });
 
         await User.findByIdAndUpdate(
-          { _id: context.user._id },
+          { _id: contextValue.user._id },
           { $push: { links: link._id } },
           { new: true }
         );
@@ -76,8 +81,8 @@ const resolvers = {
         extensions: { code: 'UNAUTHENTICATED' },
       });
     },
-    updateLink: async (parent, args, context) => {
-      if (context.user) {
+    updateLink: async (parent, args, contextValue) => {
+      if (contextValue.user) {
         const { _id, url, title } = args;
         const updatedLink = await Link.findOneAndUpdate(
           { _id },
@@ -98,8 +103,8 @@ const resolvers = {
         extensions: { code: 'UNAUTHENTICATED' },
       });
     },
-    deleteLink: async (parent, args, context) => {
-      if (context.user) {
+    deleteLink: async (parent, args, contextValue) => {
+      if (contextValue.user) {
         const { _id } = args;
         const deletedLink = await Link.findOneAndDelete({ _id });
   
@@ -110,7 +115,7 @@ const resolvers = {
         }
   
         await User.findByIdAndUpdate(
-          { _id: context.user._id },
+          { _id: contextValue.user._id },
           { $pull: { links: _id } },
           { new: true }
         );

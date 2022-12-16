@@ -14,7 +14,11 @@ const linkSchema = new Schema(
       required: true,
       trim: true,
       minlength: 1,
-    }
+    },
+    username: {
+      type: String,
+      required: true
+    },
   }
 );
 
