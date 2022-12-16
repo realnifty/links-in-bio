@@ -1,4 +1,4 @@
-const  gql  = require('graphql-tag');
+const gql = require('graphql-tag');
 
 const typeDefs = gql`
   type User {
@@ -17,6 +17,7 @@ const typeDefs = gql`
   type Query {
     me: User
     user(username: String!): User
+    users: [User]
     links(username: String): [Link]
     link(linkId: ID!): Link
   }
