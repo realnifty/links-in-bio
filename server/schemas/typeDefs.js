@@ -19,15 +19,15 @@ const typeDefs = gql`
     user(username: String!): User
     users: [User]
     links(username: String): [Link]
-    link(linkId: ID!): Link
+    link(_id: ID!): Link
   }
 
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     addLink(title: String!, url: String!): Link
-    updateLink(linkId: ID!, title: String, url: String): Link
-    deleteLink(linkId: ID!): Link
+    updateLink(_id: ID!, title: String, url: String): Link
+    deleteLink(_id: ID!): Link
   }
 
   type Auth {
