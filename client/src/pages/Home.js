@@ -13,7 +13,9 @@ const Home = () => {
 					<h1 className='font-unbounded text-xl'>Linkify</h1>
 				</div>
 				<div className='font-unbounded'>
-					<button className='pr-4'>Log in</button>
+					<button className='pr-4'>
+						<Link to='/login'>Log in</Link>
+					</button>
 					<button className='bg-indigo-800 text-white p-2 rounded-full'>
 						<Link to='/signup'>Get started</Link>
 					</button>
