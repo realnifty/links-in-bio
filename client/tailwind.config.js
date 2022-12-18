@@ -4,6 +4,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
+        unbounded: "'Unbounded', sans-serif",
+        lib: "'Libre Franklin', sans-serif",
       },
     },
   },
