@@ -25,7 +25,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div className="App">
+        <div className="text-red-500">
           <h2>Hello</h2>
         </div>
       </Router>
