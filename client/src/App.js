@@ -27,11 +27,9 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <main className='px-4 py-6 bg-indigo-400'>
           <Routes>
             <Route path="/" element={<Home />} />
           </Routes>
-        </main>
       </Router>
     </ApolloProvider>
   );
