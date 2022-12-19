@@ -1,8 +1,41 @@
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
+
+import { useMutation } from '@apollo/client';
+import { ADD_USER } from '../utils/mutations';
+import Auth from '../utils/auth';
 
 import logo from '../images/link.png';
 
 const Signup = () => {
+
+	const [formState, setFormState] = useState({ username: '', email: '', password: '' });
+
+	const [addUser, { error }] = useMutation(ADD_USER);
+
+	const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+	};
+	
+  const handleFormSubmit = async (event) => {
+		event.preventDefault();
+
+		try {
+			const { data } = await addUser({
+				variables: { ...formState },
+			});
+
+			Auth.login(data.addUser.token);
+		} catch (e) {
+			console.error(e);
+		}
+	};
+	
 	return (
 		<main className='px-4 py-6 h-screen'>
 			<div className='flex items-center'>
@@ -15,40 +48,49 @@ const Signup = () => {
 			<p className='font-lib pb-4'>
 				Choose a username. You can change it later if you'd like.
 			</p>
-			<input
-				className='bg-gray-200 p-3 mb-4 w-full rounded-full'
-				type='username'
-				name='username'
-				id='username'
-				placeholder='Username'
-			/>
-			<input
-				className='bg-gray-200 p-3 mb-4 w-full rounded-full'
-				type='email'
-				name='email'
-				id='email'
-				placeholder='Email'
-			/>
-			<input
-				className='bg-gray-200 p-3 w-full rounded-full'
-				type='password'
-				name='password'
-				id='password'
-				placeholder='Password'
-			/>
-			<p className='font-lib pt-4'>
-				By creating your account you agree to the Terms of Service and our
-				Privacy Notice.
-			</p>
-			<p className='font-lib pt-4'>
-				Already have an account? Log in{' '}
-				<span className='text-indigo-400 underline'>
-					<Link to='/login'>here.</Link>
-				</span>
-			</p>
-			<button className='font-unbounded font-extrabold text-white text-md p-3 mt-4 bg-indigo-400 rounded-full'>
-				Create account
-			</button>
+			<form onSubmit={handleFormSubmit}>
+				<input
+					className='bg-gray-200 p-3 mb-4 w-full rounded-full'
+					type='username'
+					name='username'
+					id='username'
+					placeholder='Username'
+					value={formState.username}
+					onChange={handleChange}
+				/>
+				<input
+					className='bg-gray-200 p-3 mb-4 w-full rounded-full'
+					type='email'
+					name='email'
+					id='email'
+					placeholder='Email'
+					value={formState.email}
+					onChange={handleChange}
+				/>
+				<input
+					className='bg-gray-200 p-3 w-full rounded-full'
+					type='password'
+					name='password'
+					id='password'
+					placeholder='Password'
+					value={formState.password}
+					onChange={handleChange}
+				/>
+				{error && <div className='font-lib text-red-600 pt-4'>Sign up failed</div>}
+				<p className='font-lib pt-4'>
+					By creating your account you agree to the Terms of Service and our
+					Privacy Notice.
+				</p>
+				<p className='font-lib pt-4'>
+					Already have an account? Log in{' '}
+					<span className='text-indigo-400 underline'>
+						<Link to='/login'>here.</Link>
+					</span>
+				</p>
+				<button className='font-unbounded font-extrabold text-white text-md p-3 mt-4 bg-indigo-400 rounded-full' onClick={() => {console.log(Auth.loggedIn())}}>
+					Create account
+				</button>
+			</form>
 		</main>
 	);
 };
