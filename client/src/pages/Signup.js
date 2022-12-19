@@ -89,9 +89,17 @@ const Signup = () => {
 					}}
 				/>
 				{password !== '' && !validatePassword(password) ? (
-					<p className='font-lib text-red-600 pt-4'>Password must contain at least one lowercase letter, one uppercase letter, one digit, one special character, and must be 8 - 30 characters long.</p>
-				) : password !== '' && (<p className='font-lib text-green-600 pt-4'>Password is valid</p>)}
-				{error && <div className='font-lib text-red-600 pt-4'>Sign up failed</div>}
+					<p className='font-lib text-red-600 pt-4'>
+						Password must contain at least one lowercase letter, one uppercase
+						letter, one digit, one special character, and must be 8 - 30
+						characters long.
+					</p>
+				) : (
+					password !== '' && <p className='font-lib text-green-600 pt-4'>✓</p>
+				)}
+				{error && (
+					<div className='font-lib text-red-600 pt-4'>Sign up failed</div>
+				)}
 				<p className='font-lib pt-4'>
 					By creating your account you agree to the Terms of Service and our
 					Privacy Notice.
@@ -102,7 +110,12 @@ const Signup = () => {
 						<Link to='/login'>here.</Link>
 					</span>
 				</p>
-				<button className='font-unbounded font-extrabold text-white text-md p-3 mt-4 bg-indigo-400 rounded-full' onClick={() => {console.log(Auth.loggedIn())}}>
+				<button
+					className='font-unbounded font-extrabold text-white text-md p-3 mt-4 bg-indigo-400 rounded-full'
+					onClick={() => {
+						console.log(Auth.loggedIn());
+					}}
+				>
 					Create account
 				</button>
 			</form>
