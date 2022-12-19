@@ -9,9 +9,18 @@ import logo from '../images/link.png';
 
 const Signup = () => {
 
+	const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,30}$/;
+
 	const [formState, setFormState] = useState({ username: '', email: '', password: '' });
 
+	const [password, setPassword] = useState('');
+
+	
 	const [addUser, { error }] = useMutation(ADD_USER);
+	
+	const validatePassword = (password) => {
+		return passwordRegex.test(password);
+	};
 
 	const handleChange = (event) => {
     const { name, value } = event.target;
@@ -74,8 +83,14 @@ const Signup = () => {
 					id='password'
 					placeholder='Password'
 					value={formState.password}
-					onChange={handleChange}
+					onChange={(e) => {
+						setPassword(e.target.value);
+						handleChange(e);
+					}}
 				/>
+				{password !== '' && !validatePassword(password) ? (
+					<p className='font-lib text-red-600 pt-4'>Password must contain at least one lowercase letter, one uppercase letter, one digit, one special character, and must be 8 - 30 characters long.</p>
+				) : password !== '' && (<p className='font-lib text-green-600 pt-4'>Password is valid</p>)}
 				{error && <div className='font-lib text-red-600 pt-4'>Sign up failed</div>}
 				<p className='font-lib pt-4'>
 					By creating your account you agree to the Terms of Service and our
