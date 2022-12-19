@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
@@ -33,7 +33,15 @@ const Login = () => {
 		} catch (e) {
 			console.error(e);
 		}
-	};
+  };
+  
+  const history = useHistory();
+
+  useEffect(() => {
+    if (Auth.loggedIn()) {
+      history.push('/dashboard');
+    }
+  }, [history]);
 
 	return (
 		<main className='px-4 py-6 h-screen'>
@@ -70,7 +78,7 @@ const Login = () => {
             <Link to='/signup'>here.</Link>
           </span>
         </p>
-        <button className='font-unbounded font-extrabold text-white text-md p-3 mt-4 bg-indigo-400 rounded-full'>
+        <button className='font-unbounded font-extrabold text-white text-md p-3 mt-4 bg-indigo-400 rounded-full' type='submit'>
           Log in
         </button>
       </form>

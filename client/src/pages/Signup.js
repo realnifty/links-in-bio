@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { useState } from 'react';
 
 import { useMutation } from '@apollo/client';
@@ -9,10 +9,11 @@ import logo from '../images/link.png';
 
 const Signup = () => {
 
+	
 	const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,30}$/;
-
+	
 	const [formState, setFormState] = useState({ username: '', email: '', password: '' });
-
+	
 	const [password, setPassword] = useState('');
 
 	
@@ -21,30 +22,34 @@ const Signup = () => {
 	const validatePassword = (password) => {
 		return passwordRegex.test(password);
 	};
-
+	
 	const handleChange = (event) => {
-    const { name, value } = event.target;
-
+		const { name, value } = event.target;
+		
     setFormState({
-      ...formState,
+			...formState,
       [name]: value,
     });
 	};
 	
   const handleFormSubmit = async (event) => {
 		event.preventDefault();
-
+		
 		try {
 			const { data } = await addUser({
 				variables: { ...formState },
 			});
-
+			
 			Auth.login(data.addUser.token);
 		} catch (e) {
 			console.error(e);
 		}
 	};
 	
+	if (Auth.loggedIn()) {
+		return <Navigate to='/dashboard' />;
+	}
+
 	return (
 		<main className='px-4 py-6 h-screen'>
 			<div className='flex items-center'>
@@ -114,7 +119,7 @@ const Signup = () => {
 					className='font-unbounded font-extrabold text-white text-md p-3 mt-4 bg-indigo-400 rounded-full'
 					onClick={() => {
 						console.log(Auth.loggedIn());
-					}}
+					}} type='submit'
 				>
 					Create account
 				</button>
