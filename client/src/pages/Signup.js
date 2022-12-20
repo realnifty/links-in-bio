@@ -69,7 +69,7 @@ const Signup = () => {
 			</p>
 			<form onSubmit={handleFormSubmit}>
 				<input
-					className='bg-gray-200 p-3 mb-4 w-full rounded-full'
+					className='bg-gray-200 p-3 mb-4 w-full rounded-full font-lib outline-gray-300'
 					type='username'
 					name='username'
 					id='username'
@@ -78,7 +78,7 @@ const Signup = () => {
 					onChange={handleChange}
 				/>
 				<input
-					className='bg-gray-200 p-3 mb-4 w-full rounded-full'
+					className='bg-gray-200 p-3 mb-4 w-full rounded-full font-lib outline-gray-300'
 					type='email'
 					name='email'
 					id='email'
@@ -87,7 +87,7 @@ const Signup = () => {
 					onChange={handleChange}
 				/>
 				<input
-					className='bg-gray-200 p-3 w-full rounded-full'
+					className='bg-gray-200 p-3 w-full rounded-full font-lib outline-gray-300'
 					type='password'
 					name='password'
 					id='password'
