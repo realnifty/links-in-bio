@@ -3,3 +3,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.divide-under {
+  border-bottom: 1px solid #d1d5db;
+}
+
+.active-tab {
+  border-bottom: 1px solid #111827;
+  transition: ease-in-out 0.2s;
+}
