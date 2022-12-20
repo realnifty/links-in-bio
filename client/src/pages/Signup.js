@@ -1,5 +1,5 @@
-import { Link, Navigate } from 'react-router-dom';
-import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
@@ -9,6 +9,13 @@ import logo from '../images/link.png';
 
 const Signup = () => {
 
+	const navigate = useNavigate();
+
+	useEffect(() => {
+    if (Auth.loggedIn()) {
+      navigate('/dashboard');
+    }
+  }, [navigate]);
 	
 	const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,30}$/;
 	
@@ -41,14 +48,12 @@ const Signup = () => {
 			});
 			
 			Auth.login(data.addUser.token);
+			navigate('/dashboard');
 		} catch (e) {
 			console.error(e);
 		}
 	};
 	
-	if (Auth.loggedIn()) {
-		return <Navigate to='/dashboard' />;
-	}
 
 	return (
 		<main className='px-4 py-6 h-screen'>
@@ -117,9 +122,7 @@ const Signup = () => {
 				</p>
 				<button
 					className='font-unbounded font-extrabold text-white text-md p-3 mt-4 bg-indigo-400 rounded-full'
-					onClick={() => {
-						console.log(Auth.loggedIn());
-					}} type='submit'
+					type='submit'
 				>
 					Create account
 				</button>

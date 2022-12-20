@@ -1,14 +1,17 @@
-import { Navigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import Auth from '../utils/auth';
 
 const Dashboard = () => {
 
-  if (!Auth.loggedIn()) {
-    return <Navigate to='/login' />;
-  }
+  const navigate = useNavigate();
 
-  console.log(Auth.loggedIn())
+  useEffect(() => {
+    if (!Auth.loggedIn()) {
+      navigate('/login');
+    }
+  }, [navigate]);
 
   return (
     <div>
