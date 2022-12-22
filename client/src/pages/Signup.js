@@ -10,6 +10,12 @@ import logo from '../images/link.png';
 const Signup = () => {
 
 	const navigate = useNavigate();
+	
+	const [fadeIn, setFadeIn] = useState(false);
+
+	useEffect(() => {
+		setFadeIn(true);
+	}, []);
 
 	useEffect(() => {
     if (Auth.loggedIn()) {
@@ -56,7 +62,7 @@ const Signup = () => {
 	
 
 	return (
-		<main className='px-4 py-6 h-screen'>
+		<main className={`px-4 py-6 h-screen fade-in ${fadeIn ? 'visible' : ''}`}>
 			<div className='flex items-center'>
 				<img className='h-8' src={logo} alt='linkify logo'></img>
 				<h1 className='font-unbounded text-xl'>Linkify</h1>
