@@ -5,6 +5,7 @@ import Auth from '../utils/auth';
 
 import logo from '../images/link.png';
 import LinkForm from '../components/LinkForm';
+import MyLinks from '../components/MyLinks';
 
 const Dashboard = () => {
 	const navigate = useNavigate();
@@ -34,9 +35,9 @@ const Dashboard = () => {
 	}, [navigate]);
 
 	return (
-		<main className={`h-screen fade-in ${fadeIn ? 'visible' : ''}`}>
+		<main className={`h-screen fade-in bg-slate-200 ${fadeIn ? 'visible' : ''}`}>
 			<div>
-				<div className='flex justify-between px-4 items-center py-2 divide-under'>
+				<div className='flex justify-between px-4 items-center py-2 divide-under bg-white'>
 					<img className='h-12' src={logo} alt='linkify logo' />
 					<div className='px-4 py-3 border border-gray-300 rounded-full'>
 						<button className='font-lib'>
@@ -44,7 +45,7 @@ const Dashboard = () => {
 						</button>
 					</div>
 				</div>
-				<div className='font-lib text-center flex divide-under items-center justify-around'>
+				<div className='font-lib text-center flex divide-under items-center justify-around bg-white'>
 					<div
 						className={`py-2 w-1/3 ${
 							activeTab === 'links' ? 'active-tab' : ''
@@ -74,7 +75,7 @@ const Dashboard = () => {
 					</div>
 				</div>
 			</div>
-			<div className='bg-slate-200'>
+			<div>
 				{activeTab === 'links' && (
 					<div className='flex flex-col items-center justify-center p-4 font-lib'>
 						<button
@@ -88,6 +89,7 @@ const Dashboard = () => {
 							linkFormVisible={linkFormVisible}
 							toggleLinkForm={toggleLinkForm}
 						/>
+						<MyLinks/>
 					</div>
 				)}
 				<button className='bg-black text-white' onClick={Auth.logout}>
