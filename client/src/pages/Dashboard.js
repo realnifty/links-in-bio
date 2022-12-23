@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Auth from '../utils/auth';
 
 import logo from '../images/link.png';
+import LinkForm from '../components/LinkForm';
 
 const Dashboard = () => {
 
@@ -68,13 +69,14 @@ const Dashboard = () => {
 					</div>
 				</div>
 			</div>
-			<div>
+			<div className='bg-slate-200'>
 				{activeTab === 'links' && (
 					<div className='flex flex-col items-center justify-center px-4 pt-4 font-lib'>
 						<button className='bg-indigo-400 text-white w-full py-2 rounded-full flex justify-center'>
               <i className='bi bi-plus-circle pr-2'></i>
               Add link
-						</button>
+            </button>
+            <LinkForm/>
 					</div>
 				)}
 			</div>
