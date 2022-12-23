@@ -7,28 +7,33 @@ import logo from '../images/link.png';
 import LinkForm from '../components/LinkForm';
 
 const Dashboard = () => {
+	const navigate = useNavigate();
 
-  const navigate = useNavigate();
+	const [linkFormVisible, setLinkFormVisible] = useState(false);
 
-  const [fadeIn, setFadeIn] = useState(false);
+	const toggleLinkForm = () => {
+		setLinkFormVisible(!linkFormVisible);
+	};
+
+	const [fadeIn, setFadeIn] = useState(false);
 
 	useEffect(() => {
 		setFadeIn(true);
 	}, []);
 
-  const [activeTab, setActiveTab] = useState('links');
+	const [activeTab, setActiveTab] = useState('links');
 
-  const handleClick = (tab) => {
+	const handleClick = (tab) => {
 		setActiveTab(tab);
-  };
+	};
 
-  useEffect(() => {
-    if (!Auth.loggedIn()) {
-      navigate('/login');
-    }
-  }, [navigate]);
+	useEffect(() => {
+		if (!Auth.loggedIn()) {
+			navigate('/login');
+		}
+	}, [navigate]);
 
-  return (
+	return (
 		<main className={`h-screen fade-in ${fadeIn ? 'visible' : ''}`}>
 			<div>
 				<div className='flex justify-between px-4 items-center py-2 divide-under'>
@@ -71,20 +76,26 @@ const Dashboard = () => {
 			</div>
 			<div className='bg-slate-200'>
 				{activeTab === 'links' && (
-					<div className='flex flex-col items-center justify-center px-4 pt-4 font-lib'>
-						<button className='bg-indigo-400 text-white w-full py-2 rounded-full flex justify-center'>
-              <i className='bi bi-plus-circle pr-2'></i>
-              Add link
-            </button>
-            <LinkForm/>
+					<div className='flex flex-col items-center justify-center p-4 font-lib'>
+						<button
+							className='bg-indigo-400 text-white w-full py-2 mb-4 rounded-full flex justify-center'
+							onClick={toggleLinkForm}
+						>
+							<i className='bi bi-plus-circle pr-2'></i>
+							Add link
+						</button>
+						<LinkForm
+							linkFormVisible={linkFormVisible}
+							toggleLinkForm={toggleLinkForm}
+						/>
 					</div>
 				)}
+				<button className='bg-black text-white' onClick={Auth.logout}>
+					Logout
+				</button>
 			</div>
-			<button className='bg-black text-white' onClick={Auth.logout}>
-				Logout
-			</button>
 		</main>
 	);
-}
+};
 
 export default Dashboard;
