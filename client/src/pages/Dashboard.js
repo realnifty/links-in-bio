@@ -136,9 +136,6 @@ const Dashboard = () => {
 				{activeTab === 'settings' && (
 					<Outlet/>
 				)}
-				<button className='bg-black text-white' onClick={Auth.logout}>
-					Logout
-				</button>
 			</div>
 		</main>
 	);
