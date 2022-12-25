@@ -22,3 +22,13 @@ export const LOGIN_USER = gql`
 		}
 	}
 `;
+
+export const ADD_LINK = gql`
+	mutation AddLink($title: String!, $url: String!) {
+		addLink(title: $title, url: $url) {
+			title
+			url
+			_id
+		}
+	}
+`;

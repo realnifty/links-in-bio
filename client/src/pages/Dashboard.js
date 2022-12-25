@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import { GET_ME } from '../utils/queries';
+import { useQuery } from '@apollo/client';
+
 import Auth from '../utils/auth';
 
 import logo from '../images/link.png';
@@ -10,19 +13,21 @@ import MyLinks from '../components/MyLinks';
 const Dashboard = () => {
 	const navigate = useNavigate();
 
-	const [linkFormVisible, setLinkFormVisible] = useState(false);
+	const {data: userData} = useQuery(GET_ME);
 
+	const [linkFormVisible, setLinkFormVisible] = useState(false);
+	
+	const [fadeIn, setFadeIn] = useState(false);
+
+	const [activeTab, setActiveTab] = useState('links');
+	
 	const toggleLinkForm = () => {
 		setLinkFormVisible(!linkFormVisible);
 	};
 
-	const [fadeIn, setFadeIn] = useState(false);
-
 	useEffect(() => {
 		setFadeIn(true);
 	}, []);
-
-	const [activeTab, setActiveTab] = useState('links');
 
 	const handleClick = (tab) => {
 		setActiveTab(tab);
@@ -86,6 +91,7 @@ const Dashboard = () => {
 							Add link
 						</button>
 						<LinkForm
+							username={userData.me.username}
 							linkFormVisible={linkFormVisible}
 							toggleLinkForm={toggleLinkForm}
 						/>

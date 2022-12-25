@@ -1,5 +1,15 @@
+import { useState } from "react";
+
+import { useMutation } from "@apollo/client";
+import { ADD_LINK } from "../../utils/mutations";
+
 const LinkForm = (props) => {
+  
   const {linkFormVisible, toggleLinkForm} = props
+  
+  const [linkText, setLinkText] = useState('');
+
+  const [addLink, { error }] = useMutation(ADD_LINK);
 
 	return (
     <div className={`bg-white rounded-3xl p-6 mb-4 shadow-sm flex flex-col ${linkFormVisible ? 'link-form-visible' : 'link-form'}`}>
