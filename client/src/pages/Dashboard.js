@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Outlet, useLocation } from 'react-router-dom';
 
 import { GET_ME } from '../utils/queries';
 import { useQuery } from '@apollo/client';
@@ -9,9 +9,13 @@ import Auth from '../utils/auth';
 import logo from '../images/link.png';
 import LinkForm from '../components/LinkForm';
 import MyLinks from '../components/MyLinks';
+import Customize from '../components/Customize';
+import Settings from '../components/Settings';
 
 const Dashboard = () => {
 	const navigate = useNavigate();
+
+	const location = useLocation();
 
   const { loading, error, data: userData } = useQuery(GET_ME, {
     pollInterval: 200,
@@ -34,6 +38,17 @@ const Dashboard = () => {
 	const handleClick = (tab) => {
 		setActiveTab(tab);
 	};
+
+	useEffect(() => {
+		if (location.pathname === '/dashboard') {
+			setActiveTab('links');
+		} else if (location.pathname === '/dashboard/customize') {
+			setActiveTab('customize');
+		} else if (location.pathname === '/dashboard/settings') {
+			setActiveTab('settings');
+		}
+	}, [setActiveTab, location]);
+	
 
 	useEffect(() => {
 		if (!Auth.loggedIn()) {
@@ -59,7 +74,10 @@ const Dashboard = () => {
 						className={`py-2 w-1/3 ${
 							activeTab === 'links' ? 'active-tab' : ''
 						}`}
-						onClick={() => handleClick('links')}
+						onClick={() => {
+							handleClick('links');
+							navigate('/dashboard');
+						}}
 					>
 						<i className='bi bi-link text-xl'></i>
 						<h1 className='text-sm'>Links</h1>
@@ -68,7 +86,10 @@ const Dashboard = () => {
 						className={`py-2 w-1/3 ${
 							activeTab === 'customize' ? 'active-tab' : ''
 						}`}
-						onClick={() => handleClick('customize')}
+						onClick={() => {
+							handleClick('customize');
+							navigate('/dashboard/customize');
+						}}
 					>
 						<i className='bi bi-palette text-xl'></i>
 						<h1 className='text-sm'>Customize</h1>
@@ -77,7 +98,10 @@ const Dashboard = () => {
 						className={`py-2 w-1/3 ${
 							activeTab === 'settings' ? 'active-tab' : ''
 						}`}
-						onClick={() => handleClick('settings')}
+						onClick={() => {
+							handleClick('settings');
+							navigate('/dashboard/settings');
+						}}
 					>
 						<i className='bi bi-sliders2 text-xl'></i>
 						<h1 className='text-sm'>Settings</h1>
@@ -105,6 +129,12 @@ const Dashboard = () => {
 							/>
 						)}
 					</div>
+				)}
+				{activeTab === 'customize' && (
+					<Outlet/>
+				)}
+				{activeTab === 'settings' && (
+					<Outlet/>
 				)}
 				<button className='bg-black text-white' onClick={Auth.logout}>
 					Logout
