@@ -14,7 +14,7 @@ const Dashboard = () => {
 	const navigate = useNavigate();
 
   const { loading, error, data: userData } = useQuery(GET_ME, {
-    pollInterval: 500,
+    pollInterval: 200,
   });
 
 	const [linkFormVisible, setLinkFormVisible] = useState(false);
@@ -43,7 +43,7 @@ const Dashboard = () => {
 
 	return (
 		<main
-			className={`h-full fade-in bg-slate-200 ${fadeIn ? 'visible' : ''}`}
+			className={`min-h-screen fade-in bg-slate-200 ${fadeIn ? 'visible' : ''}`}
 		>
 			<div className='sticky'>
 				<div className='flex justify-between px-4 items-center py-2 divide-under bg-white'>

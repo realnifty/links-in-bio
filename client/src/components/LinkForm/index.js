@@ -11,7 +11,7 @@ const LinkForm = (props) => {
 
 	const [url, setUrl] = useState('');
 
-	const [addLink, { error }] = useMutation(ADD_LINK, {
+	const [addLink, loading, error ] = useMutation(ADD_LINK, {
 		update(cache, { data: { addLink } }) {
 			try {
 				// could potentially not exist yet, so wrap in a try...catch

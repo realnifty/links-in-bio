@@ -32,3 +32,11 @@ export const ADD_LINK = gql`
 		}
 	}
 `;
+
+export const DELETE_LINK = gql`
+	mutation DeleteLink($id: ID!) {
+		deleteLink(_id: $id) {
+			_id
+		}
+	}
+`;
