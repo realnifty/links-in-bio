@@ -13,7 +13,9 @@ import MyLinks from '../components/MyLinks';
 const Dashboard = () => {
 	const navigate = useNavigate();
 
-	const {data: userData} = useQuery(GET_ME);
+  const { loading, error, data: userData } = useQuery(GET_ME, {
+    pollInterval: 500,
+  });
 
 	const [linkFormVisible, setLinkFormVisible] = useState(false);
 	
@@ -40,8 +42,10 @@ const Dashboard = () => {
 	}, [navigate]);
 
 	return (
-		<main className={`h-screen fade-in bg-slate-200 ${fadeIn ? 'visible' : ''}`}>
-			<div>
+		<main
+			className={`h-full fade-in bg-slate-200 ${fadeIn ? 'visible' : ''}`}
+		>
+			<div className='sticky'>
 				<div className='flex justify-between px-4 items-center py-2 divide-under bg-white'>
 					<img className='h-12' src={logo} alt='linkify logo' />
 					<div className='px-4 py-3 border border-gray-300 rounded-full'>
@@ -80,7 +84,7 @@ const Dashboard = () => {
 					</div>
 				</div>
 			</div>
-			<div>
+			<div className='overflow-scroll'>
 				{activeTab === 'links' && (
 					<div className='flex flex-col items-center justify-center p-4 font-lib'>
 						<button
@@ -91,11 +95,15 @@ const Dashboard = () => {
 							Add link
 						</button>
 						<LinkForm
-							username={userData.me.username}
 							linkFormVisible={linkFormVisible}
 							toggleLinkForm={toggleLinkForm}
 						/>
-						<MyLinks/>
+						{userData && (
+							<MyLinks
+								username={userData.me.username}
+								links={userData.me.links}
+							/>
+						)}
 					</div>
 				)}
 				<button className='bg-black text-white' onClick={Auth.logout}>
