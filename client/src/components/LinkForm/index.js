@@ -4,6 +4,8 @@ import { useMutation } from '@apollo/client';
 import { ADD_LINK } from '../../utils/mutations';
 import { GET_ME } from '../../utils/queries';
 
+import spinner from '../../images/spinner.svg';
+
 const LinkForm = (props) => {
 	const { linkFormVisible, toggleLinkForm } = props;
 
@@ -47,6 +49,9 @@ const LinkForm = (props) => {
 		try {
 			await addLink({
 				variables: { title, url },
+				onCompleted: () => {
+					toggleLinkForm();
+				}
       });
 
 			// clear form value
@@ -95,10 +100,9 @@ const LinkForm = (props) => {
 				<button
 					form='addLinkForm'
 					type='submit'
-					onClick={toggleLinkForm}
 					className='font-lib text-white text-md py-1 px-3 bg-indigo-400 rounded-full'
 				>
-					Add
+					{ loading.loading === false ? <span>Add</span> : <img className='animate-spin h-6' src={spinner} alt='spinner loading'></img>}
 				</button>
 			</div>
 		</div>

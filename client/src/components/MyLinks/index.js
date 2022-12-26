@@ -4,6 +4,8 @@ import { useMutation } from '@apollo/client';
 import { GET_ME } from '../../utils/queries';
 import { DELETE_LINK } from '../../utils/mutations';
 
+import spinner from '../../images/spinner-dark.svg';
+
 const MyLinks = ({ links }) => {
 
 	const [deleteLink, loading, error] = useMutation(DELETE_LINK, {
@@ -71,6 +73,7 @@ const MyLinks = ({ links }) => {
 								>
 									<i className='bi bi-trash3'></i>
 								</button>
+								{loading.loading !== false && <img className='animate-spin h-6' src={spinner} alt='spinner'></img>}
 								{toggleWarning[link._id] && (
 									<div>
 										<p className='text-base mt-1 text-red-600'>Are you sure you want to delete this link?</p>

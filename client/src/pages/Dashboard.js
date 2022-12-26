@@ -9,17 +9,13 @@ import Auth from '../utils/auth';
 import logo from '../images/link.png';
 import LinkForm from '../components/LinkForm';
 import MyLinks from '../components/MyLinks';
-import Customize from '../components/Customize';
-import Settings from '../components/Settings';
 
 const Dashboard = () => {
 	const navigate = useNavigate();
 
 	const location = useLocation();
 
-  const { loading, error, data: userData } = useQuery(GET_ME, {
-    pollInterval: 200,
-  });
+  const { loading, error, data: userData } = useQuery(GET_ME);
 
 	const [linkFormVisible, setLinkFormVisible] = useState(false);
 	
