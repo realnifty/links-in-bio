@@ -5,6 +5,9 @@ const typeDefs = gql`
     _id: ID
     username: String
     email: String
+    displayName: String
+    biography: String
+    profilePicture: String
     links: [Link]
   }
 

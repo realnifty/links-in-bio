@@ -6,6 +6,8 @@ export const GET_ME = gql`
 			username
 			_id
 			email
+			profilePicture
+			displayName
 			links {
 				_id
 				title

@@ -1,5 +1,6 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
+const defaultPFP = '../images/default_pfp.png';
 
 const userSchema = new Schema(
 	{
@@ -28,6 +29,18 @@ const userSchema = new Schema(
 				/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,30})/,
 				'Password format invalid.',
 			],
+		},
+		displayName: {
+			type: String,
+			trim: true
+		},
+		biography: {
+			type: String,
+			trim: true
+		},
+		profilePicture: {
+			type: String,
+			default: defaultPFP
 		},
 		links: [
 			{
