@@ -15,7 +15,7 @@ const Dashboard = () => {
 
 	const location = useLocation();
 
-  const { loading, error, data: userData } = useQuery(GET_ME);
+  const { data: userData } = useQuery(GET_ME);
 
 	const [linkFormVisible, setLinkFormVisible] = useState(false);
 	

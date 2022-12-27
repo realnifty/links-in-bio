@@ -10,7 +10,7 @@ const MyLinks = ({ links }) => {
 
 	const [deleteLinkId, setDeleteLinkId] = useState(null);
 
-	const [deleteLink, loading, error] = useMutation(DELETE_LINK, {
+	const [deleteLink, loading] = useMutation(DELETE_LINK, {
 		update(cache, { data: { deleteLink } }) {
 			try {
 				// could potentially not exist yet, so wrap in a try...catch
