@@ -59,7 +59,7 @@ const MyLinks = ({ links }) => {
 					>
 						<div className=''>
 							<h1 className='font-bold'>{link.title}</h1>
-							<p>{link.url}</p>
+							<p className='text-md overflow-auto'>{link.url}</p>
 						</div>
 						<div className='flex justify-between'>
 							<div className='text-xl text-gray-400 mt-2'>
@@ -73,17 +73,31 @@ const MyLinks = ({ links }) => {
 								>
 									<i className='bi bi-trash3'></i>
 								</button>
-								{loading.loading !== false && <img className='animate-spin h-6' src={spinner} alt='spinner'></img>}
+								{loading.loading !== false && (
+									<img
+										className='animate-spin h-6'
+										src={spinner}
+										alt='spinner'
+									></img>
+								)}
 								{toggleWarning[link._id] && (
 									<div>
-										<p className='text-base mt-1 text-red-600'>Are you sure you want to delete this link?</p>
-										<button onClick={() => {
-											setToggleWarning(false);
-											handleDelete(link._id);
-										}}>
+										<p className='text-base mt-1 text-red-600'>
+											Are you sure you want to delete this link?
+										</p>
+										<button
+											onClick={() => {
+												setToggleWarning(false);
+												handleDelete(link._id);
+											}}
+										>
 											<i className='bi bi-check-circle mr-2 text-green-600'></i>
 										</button>
-										<button onClick={() => {setToggleWarning(false)}}>
+										<button
+											onClick={() => {
+												setToggleWarning(false);
+											}}
+										>
 											<i className='bi bi-x-circle text-red-600'></i>
 										</button>
 									</div>

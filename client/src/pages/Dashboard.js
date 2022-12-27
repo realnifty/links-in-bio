@@ -68,7 +68,7 @@ const Dashboard = () => {
 				<div className='font-lib text-center flex divide-under items-center justify-around bg-white'>
 					<div
 						className={`py-2 w-1/3 ${
-							activeTab === 'links' ? 'active-tab' : ''
+							activeTab === 'links' ? 'active-tab' : 'text-gray-400'
 						}`}
 						onClick={() => {
 							handleClick('links');
@@ -80,7 +80,7 @@ const Dashboard = () => {
 					</div>
 					<div
 						className={`py-2 w-1/3 ${
-							activeTab === 'customize' ? 'active-tab' : ''
+							activeTab === 'customize' ? 'active-tab' : 'text-gray-400'
 						}`}
 						onClick={() => {
 							handleClick('customize');
@@ -92,7 +92,7 @@ const Dashboard = () => {
 					</div>
 					<div
 						className={`py-2 w-1/3 ${
-							activeTab === 'settings' ? 'active-tab' : ''
+							activeTab === 'settings' ? 'active-tab' : 'text-gray-400'
 						}`}
 						onClick={() => {
 							handleClick('settings');
@@ -126,12 +126,8 @@ const Dashboard = () => {
 						)}
 					</div>
 				)}
-				{activeTab === 'customize' && (
-					<Outlet/>
-				)}
-				{activeTab === 'settings' && (
-					<Outlet/>
-				)}
+				{activeTab === 'customize' && <Outlet />}
+				{activeTab === 'settings' && <Outlet />}
 			</div>
 		</main>
 	);
