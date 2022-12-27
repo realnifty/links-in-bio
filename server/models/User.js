@@ -36,6 +36,7 @@ const userSchema = new Schema(
 		},
 		biography: {
 			type: String,
+			maxlength: 60,
 			trim: true
 		},
 		profilePicture: {

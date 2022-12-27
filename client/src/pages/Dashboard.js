@@ -87,7 +87,7 @@ const Dashboard = () => {
 							navigate('/dashboard/customize');
 						}}
 					>
-						<i className='bi bi-palette text-xl'></i>
+						<i className='bi bi-circle-square text-xl'></i>
 						<h1 className='text-sm'>Customize</h1>
 					</div>
 					<div

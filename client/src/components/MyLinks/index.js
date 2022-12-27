@@ -8,6 +8,8 @@ import spinner from '../../images/spinner-dark.svg';
 
 const MyLinks = ({ links }) => {
 
+	const [deleteLinkId, setDeleteLinkId] = useState(null);
+
 	const [deleteLink, loading, error] = useMutation(DELETE_LINK, {
 		update(cache, { data: { deleteLink } }) {
 			try {
@@ -29,6 +31,9 @@ const MyLinks = ({ links }) => {
 	});
 
 	const handleDelete = async (linkId) => {
+
+		setDeleteLinkId(linkId);
+
 		try {
 			await deleteLink({
 				variables: {
@@ -38,6 +43,8 @@ const MyLinks = ({ links }) => {
 		} catch (e) {
 			console.error(e);
 		}
+
+		setDeleteLinkId(null);
 	};
 
 	const [toggleWarning, setToggleWarning] = useState(false);
@@ -73,7 +80,7 @@ const MyLinks = ({ links }) => {
 								>
 									<i className='bi bi-trash3'></i>
 								</button>
-								{loading.loading !== false && (
+								{loading.loading !== false && link._id === deleteLinkId && (
 									<img
 										className='animate-spin h-6'
 										src={spinner}
