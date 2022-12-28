@@ -20,7 +20,7 @@ const Background = (props) => {
 						{showColorPicker ? (
 							<BlockPicker color={color} onChangeComplete={handleColorChange} disableAlpha={true} />
 						) : null}
-						<p className='text-center mt-6'>Need color inspo? Check <span><a className='underline text-indigo-400' href='https://coolors.co/palettes/trending' target='_blank' rel='noopener noreferrer'>here.</a></span></p>
+						<p className='text-center mt-6'>Need color inspo? Check <span><a className='text-indigo-400' href='https://coolors.co/palettes/trending' target='_blank' rel='noopener noreferrer'>here.</a></span></p>
 					</div>
 					<h1 className='mt-10'>More styles coming soon...</h1>
 				</div>
