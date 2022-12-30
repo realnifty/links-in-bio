@@ -36,6 +36,15 @@
   transform: translateX(0);
 }
 
+.btn-shadow {
+  box-shadow: 6px 6px black;;
+}
+
+.btn-select {
+  outline: 2px solid black;
+  outline-offset: 8px;
+}
+
 input, textarea {
 text-decoration: blink;
 }

@@ -56,7 +56,7 @@ const Dashboard = () => {
 		<main
 			className={`min-h-screen fade-in bg-slate-200 ${fadeIn ? 'visible' : ''}`}
 		>
-			<div className='sticky'>
+			<div className='sticky inset-0'>
 				<div className='flex justify-between px-4 items-center py-2 divide-under bg-white'>
 					<img className='h-12' src={logo} alt='linkify logo' />
 					<div className='px-4 py-3 border border-gray-300 rounded-full'>

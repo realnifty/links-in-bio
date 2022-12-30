@@ -3,20 +3,47 @@ import { useState } from 'react';
 import defaultPFP from '../../images/default_pfp.png';
 
 import Background from '../Background';
+import Buttons from '../Buttons';
 
 const Customize = () => {
-	const [showColorPicker, setShowColorPicker] = useState(false);
+	const [showBgColorPicker, setShowBgColorPicker] = useState(false);
 
-	const [color, setColor] = useState('#000000');
+	const [bgColor, setBgColor] = useState('#000000');
 
-	const handleColorChange = (color) => {
-		setColor(color.hex);
-		setShowColorPicker(false);
+	const handleBgColorChange = (bgColor) => {
+		setBgColor(bgColor.hex);
+		setShowBgColorPicker(false);
 	};
 
-	const handleInputChange = (e) => {
-		setColor(e.target.value);
+	const handleBgInputChange = (e) => {
+		setBgColor(e.target.value);
 	};
+
+	const [showBtnColorPicker, setShowBtnColorPicker] = useState(false);
+
+	const [btnColor, setBtnColor] = useState('#000000');
+
+	const handleBtnColorChange = (btnColor) => {
+		setBtnColor(btnColor.hex);
+		setShowBtnColorPicker(false);
+	};
+
+	const handleBtnInputChange = (e) => {
+		setBtnColor(e.target.value);
+	};
+
+	// const [showFontColorPicker, setShowFontColorPicker] = useState(false);
+	
+	// const [fontColor, setFontColor] = useState('#000000');
+
+	// const handleFontColorChange = (fontColor) => {
+	// 	setFontColor(fontColor.hex);
+	// 	setShowFontColorPicker(false);
+	// };
+
+	// const handleFontInputChange = (e) => {
+	// 	setFontColor(e.target.value);
+	// };
 
 	return (
 		<>
@@ -51,11 +78,18 @@ const Customize = () => {
 				</div>
 			</div>
 			<Background
-				color={color}
-				setShowColorPicker={setShowColorPicker}
-				showColorPicker={showColorPicker}
-				handleColorChange={handleColorChange}
-				handleInputChange={handleInputChange}
+				color={bgColor}
+				setShowBgColorPicker={setShowBgColorPicker}
+				showBgColorPicker={showBgColorPicker}
+				handleBgColorChange={handleBgColorChange}
+				handleBgInputChange={handleBgInputChange}
+			/>
+			<Buttons
+				color={btnColor}
+				setShowBtnColorPicker={setShowBtnColorPicker}
+				showBtnColorPicker={showBtnColorPicker}
+				handleBtnColorChange={handleBtnColorChange}
+				handleBtnInputChange={handleBtnInputChange}
 			/>
 		</>
 	);
