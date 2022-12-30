@@ -8,6 +8,10 @@ const typeDefs = gql`
     displayName: String
     biography: String
     profilePicture: String
+    buttonStyle: String
+    buttonColor: String
+    backgroundColor: String
+    fontColor: String
     links: [Link]
   }
 
@@ -31,6 +35,9 @@ const typeDefs = gql`
     addLink(title: String!, url: String!): Link
     updateLink(_id: ID!, title: String, url: String): Link
     deleteLink(_id: ID!): Link
+    updateProfile(displayName: String, biography: String): User
+    customizeProfile(buttonStyle: String, buttonColor: String, backgroundColor: String, fontColor: String): User
+    deleteMe: User
   }
 
   type Auth {

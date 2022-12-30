@@ -126,6 +126,69 @@ const resolvers = {
       throw new GraphQLError('Must be logged in.', {
         extensions: { code: 'UNAUTHENTICATED' },
       });
+    },
+    updateProfile: async (parent, args, contextValue) => {
+      if (contextValue.user) {
+        const { displayName, biography } = args;
+        const updatedUser = await User.findOneAndUpdate(
+          { _id: contextValue.user._id },
+          { displayName, biography },
+          { new: true }
+        );
+
+        if (!updatedUser) {
+          throw new GraphQLError('User not found.', {
+            extensions: { code: 'NOT_FOUND' },
+          });
+        }
+
+        return updatedUser;
+      }
+
+      throw new GraphQLError('Must be logged in.', {
+        extensions: { code: 'UNAUTHENTICATED' },
+      });
+    },
+    customizeProfile: async (parent, args, contextValue) => {
+      if (contextValue.user) {
+        const { backgroundColor, buttonColor, buttonStyle, fontColor } = args;
+        const updatedUser = await User.findOneAndUpdate(
+          { _id: contextValue.user._id },
+          { backgroundColor, buttonColor, buttonStyle, fontColor },
+          { new: true }
+        );
+
+        if (!updatedUser) {
+          throw new GraphQLError('User not found.', {
+            extensions: { code: 'NOT_FOUND' },
+          });
+        }
+
+        return updatedUser;
+      }
+
+      throw new GraphQLError('Must be logged in.', {
+        extensions: { code: 'UNAUTHENTICATED' },
+      });
+    },
+    deleteMe: async (parent, args, contextValue) => {
+      if (contextValue.user) {
+        const deletedUser = await User.findOneAndDelete({
+          _id: contextValue.user._id,
+        });
+
+        if (!deletedUser) {
+          throw new GraphQLError('User not found.', {
+            extensions: { code: 'NOT_FOUND' },
+          });
+        }
+
+        return deletedUser;
+      }
+
+      throw new GraphQLError('Must be logged in.', {
+        extensions: { code: 'UNAUTHENTICATED' },
+      });
     }
   }
 };

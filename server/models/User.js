@@ -43,6 +43,22 @@ const userSchema = new Schema(
 			type: String,
 			default: defaultPFP
 		},
+		buttonStyle: {
+			type: String,
+			default: 'solid'
+		},
+		buttonColor: {
+			type: String,
+			default: '#000000'
+		},
+		backgroundColor: {
+			type: String,
+			default: '#FFFFFF'
+		},
+		fontColor: {
+			type: String,
+			default: '#000000'
+		},
 		links: [
 			{
 				type: Schema.Types.ObjectId,

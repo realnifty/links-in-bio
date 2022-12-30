@@ -18,37 +18,37 @@ const Buttons = (props) => {
 			<div className='flex flex-col bg-white rounded-xl py-6'>
 				<h1 className='ml-6 my-6 font-bold'>Solid</h1>
 				<div className='flex flex-col items-center justify-center text-white'>
-					<button className={`bg-black px-14 py-3 mb-6 ${selectedBtn === 1 ? 'btn-select' : ''}`} style={{ backgroundColor: color}} onClick={() => setSelectedBtn(1)}>
+					<button className={`bg-black px-14 py-3 mb-6 ${selectedBtn === 'solid' ? 'btn-select' : ''}`} style={{ backgroundColor: color}} onClick={() => handleBtnSelect('solid')}>
 						Your Link Here
 					</button>
-					<button className={`bg-black px-14 py-3 mb-6 rounded-xl ${selectedBtn === 2 ? 'btn-select' : ''}`} style={{ backgroundColor: color}} onClick={() => setSelectedBtn(2)}>
+					<button className={`bg-black px-14 py-3 mb-6 rounded-xl ${selectedBtn === 'solid-round' ? 'btn-select' : ''}`} style={{ backgroundColor: color}} onClick={() => handleBtnSelect('solid-round')}>
 						Your Link Here
 					</button>
-					<button className={`bg-black px-14 py-3 mb-6 rounded-full ${selectedBtn === 3 ? 'btn-select' : ''}`} style={{ backgroundColor: color}} onClick={() => setSelectedBtn(3)}>
+					<button className={`bg-black px-14 py-3 mb-6 rounded-full ${selectedBtn === 'solid-rounder' ? 'btn-select' : ''}`} style={{ backgroundColor: color}} onClick={() => handleBtnSelect('solid-rounder')}>
 						Your Link Here
 					</button>
 				</div>
 				<h1 className='ml-6 my-6 font-bold'>Outlined</h1>
 				<div className='flex flex-col items-center justify-center'>
-					<button className={`border border-black px-14 py-3 mb-6 ${selectedBtn === 4 ? 'btn-select' : ''}`} style={{borderColor: color}} onClick={() => setSelectedBtn(4)}>
+					<button className={`border border-black px-14 py-3 mb-6 ${selectedBtn === 'outlined' ? 'btn-select' : ''}`} style={{borderColor: color}} onClick={() => handleBtnSelect('outlined')}>
 						Your Link Here
 					</button>
-					<button className={`border border-black px-14 py-3 mb-6 rounded-xl ${selectedBtn === 5 ? 'btn-select' : ''}`} style={{borderColor: color}} onClick={() => setSelectedBtn(5)}>
+					<button className={`border border-black px-14 py-3 mb-6 rounded-xl ${selectedBtn === 'outlined-round' ? 'btn-select' : ''}`} style={{borderColor: color}} onClick={() => handleBtnSelect('outline-round')}>
 						Your Link Here
 					</button>
-					<button className={`border border-black px-14 py-3 mb-6 rounded-full ${selectedBtn === 6 ? 'btn-select' : ''}`} style={{borderColor: color}} onClick={() => setSelectedBtn(6)}>
+					<button className={`border border-black px-14 py-3 mb-6 rounded-full ${selectedBtn === 'outlined-rounder' ? 'btn-select' : ''}`} style={{borderColor: color}} onClick={() => handleBtnSelect('outline-rounder')}>
 						Your Link Here
 					</button>
 				</div>
 				<h1 className='ml-6 my-6 font-bold'>Shadowed</h1>
 				<div className='flex flex-col items-center justify-center text-white'>
-					<button className={`border border-black px-14 py-3 mb-6 btn-shadow ${selectedBtn === 7 ? 'btn-select' : ''}`} style={{ backgroundColor: color}} onClick={() => setSelectedBtn(7)}>
+					<button className={`border border-black px-14 py-3 mb-6 btn-shadow ${selectedBtn === 'shadowed' ? 'btn-select' : ''}`} style={{ backgroundColor: color}} onClick={() => handleBtnSelect('shadowed')}>
 						Your Link Here
 					</button>
-					<button className={`border border-black px-14 py-3 mb-6 btn-shadow rounded-xl ${selectedBtn === 8 ? 'btn-select' : ''}`} style={{ backgroundColor: color}} onClick={() => setSelectedBtn(8)}>
+					<button className={`border border-black px-14 py-3 mb-6 btn-shadow rounded-xl ${selectedBtn === 'shadowed-round' ? 'btn-select' : ''}`} style={{ backgroundColor: color}} onClick={() => handleBtnSelect('shadowed-round')}>
 						Your Link Here
 					</button>
-					<button className={`border border-black px-14 py-3 mb-6 btn-shadow rounded-full ${selectedBtn === 9 ? 'btn-select' : ''}`} style={{ backgroundColor: color}} onClick={() => setSelectedBtn(9)}>
+					<button className={`border border-black px-14 py-3 mb-6 btn-shadow rounded-full ${selectedBtn === 'shadowed-rounder' ? 'btn-select' : ''}`} style={{ backgroundColor: color}} onClick={() => handleBtnSelect('shadowed-rounder')}>
 						Your Link Here
 					</button>
 				</div>
