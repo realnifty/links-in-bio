@@ -105,13 +105,14 @@ const Customize = () => {
 						<input
 							className='bg-gray-200 w-full rounded-xl px-2 py-2 mb-4 outline-1'
 							type='text'
-							placeholder={`@username`}
+							placeholder={userData?.me?.displayName}
 						/>
 						<p className='text-sm'>Bio</p>
 						<textarea
 							className='bg-gray-200 w-full rounded-xl px-2 py-4 outline-1'
 							name=''
 							id=''
+							placeholder={userData?.me?.biography}
 						></textarea>
 					</div>
 				</div>
