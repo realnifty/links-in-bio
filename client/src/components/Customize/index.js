@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 import { GET_ME } from '../../utils/queries';
 import { useQuery } from '@apollo/client';
-import { UPDATE_BG_COLOR, UPDATE_BTN_STYLE, UPDATE_BTN_COLOR, UPDATE_PROFILE } from '../../utils/mutations';
+import { UPDATE_BG_COLOR, UPDATE_BTN_STYLE, UPDATE_BTN_COLOR, UPDATE_PROFILE, UPDATE_BTN_FONT_COLOR } from '../../utils/mutations';
 import { useMutation } from '@apollo/client';
 
 import defaultPFP from '../../images/default_pfp.png';
@@ -22,6 +22,8 @@ const Customize = () => {
 	const [updateBtnColor] = useMutation(UPDATE_BTN_COLOR);
 
 	const [updateProfile] = useMutation(UPDATE_PROFILE);
+
+	const [updateBtnFontColor] = useMutation(UPDATE_BTN_FONT_COLOR);
 
 	const [showBgColorPicker, setShowBgColorPicker] = useState(false);
 
@@ -138,18 +140,44 @@ const Customize = () => {
 		}
 	};
 
-	// const [showFontColorPicker, setShowFontColorPicker] = useState(false);
-	
-	// const [fontColor, setFontColor] = useState('#000000');
+	const [showBtnFontColorPicker, setShowBtnFontColorPicker] = useState(false);
 
-	// const handleFontColorChange = (fontColor) => {
-	// 	setFontColor(fontColor.hex);
-	// 	setShowFontColorPicker(false);
-	// };
+	const [btnFontColor, setBtnFontColor] = useState('#000000');
 
-	// const handleFontInputChange = (e) => {
-	// 	setFontColor(e.target.value);
-	// };
+	useEffect(() => {
+		if (userData && userData.me && userData.me.fontColor) {
+			setBtnFontColor(userData.me.fontColor);
+		}
+	}, [userData]);
+
+	const handleBtnFontColorChange = async (btnFontColor) => {
+		try {
+			await updateBtnFontColor({
+				variables: { fontColor: btnFontColor.hex },
+			});
+		}
+		catch (e) {
+			console.error(e);
+		}
+		setBtnFontColor(btnFontColor.hex);
+		setShowBtnFontColorPicker(false);
+	};
+
+	const handleBtnFontInputChange = (e) => {
+		setBtnFontColor(e.target.value);
+	};
+
+	const handleBtnFontInputBlur = async () => {
+		try {
+			await updateBtnFontColor({
+				variables: {
+					fontColor: btnFontColor,
+				},
+			});
+		} catch (e) {
+			console.error(e);
+		}
+	};
 
 	return (
 		<>
@@ -202,7 +230,8 @@ const Customize = () => {
 				handleBgInputBlur={handleBgInputBlur}
 			/>
 			<Buttons
-				color={btnColor}
+				btnColor={btnColor}
+				btnFontColor={btnFontColor}
 				setShowBtnColorPicker={setShowBtnColorPicker}
 				showBtnColorPicker={showBtnColorPicker}
 				handleBtnColorChange={handleBtnColorChange}
@@ -211,6 +240,11 @@ const Customize = () => {
 				setBtnStyle={setBtnStyle}
 				handleBtnStyleChange={handleBtnStyleChange}
 				handleBtnInputBlur={handleBtnInputBlur}
+				setShowBtnFontColorPicker={setShowBtnFontColorPicker}
+				showBtnFontColorPicker={showBtnFontColorPicker}
+				handleBtnFontColorChange={handleBtnFontColorChange}
+				handleBtnFontInputChange={handleBtnFontInputChange}
+				handleBtnFontInputBlur={handleBtnFontInputBlur}
 			/>
 		</>
 	);

@@ -4,7 +4,6 @@ import { BlockPicker } from 'react-color';
 
 const Buttons = (props) => {
 	const {
-		color,
 		btnColor,
 		setShowBtnColorPicker,
 		showBtnColorPicker,
@@ -13,7 +12,13 @@ const Buttons = (props) => {
 		btnStyle,
 		setBtnStyle,
 		handleBtnStyleChange,
-		handleBtnInputBlur
+		handleBtnInputBlur,
+		setShowBtnFontColorPicker,
+		showBtnFontColorPicker,
+		btnFontColor,
+		handleBtnFontColorChange,
+		handleBtnFontInputChange,
+		handleBtnFontInputBlur,
 	} = props;
 
 	return (
@@ -26,7 +31,7 @@ const Buttons = (props) => {
 						className={`bg-black px-14 py-3 mb-6 ${
 							btnStyle === 'solid' ? 'btn-select' : ''
 						}`}
-						style={{ backgroundColor: color }}
+						style={{ backgroundColor: btnColor, color: btnFontColor }}
 						onClick={() => {
 							setBtnStyle('solid');
 							handleBtnStyleChange('solid');
@@ -38,7 +43,7 @@ const Buttons = (props) => {
 						className={`bg-black px-14 py-3 mb-6 rounded-xl ${
 							btnStyle === 'solid-round' ? 'btn-select' : ''
 						}`}
-						style={{ backgroundColor: color }}
+						style={{ backgroundColor: btnColor, color: btnFontColor }}
 						onClick={() => {
 							setBtnStyle('solid-round');
 							handleBtnStyleChange('solid-round');
@@ -50,7 +55,7 @@ const Buttons = (props) => {
 						className={`bg-black px-14 py-3 mb-6 rounded-full ${
 							btnStyle === 'solid-rounder' ? 'btn-select' : ''
 						}`}
-						style={{ backgroundColor: color }}
+						style={{ backgroundColor: btnColor, color: btnFontColor }}
 						onClick={() => {
 							setBtnStyle('solid-rounder');
 							handleBtnStyleChange('solid-rounder');
@@ -65,7 +70,7 @@ const Buttons = (props) => {
 						className={`border border-black px-14 py-3 mb-6 ${
 							btnStyle === 'outlined' ? 'btn-select' : ''
 						}`}
-						style={{ borderColor: color }}
+						style={{ borderColor: btnColor, color: btnFontColor }}
 						onClick={() => {
 							setBtnStyle('outlined');
 							handleBtnStyleChange('outlined');
@@ -77,7 +82,7 @@ const Buttons = (props) => {
 						className={`border border-black px-14 py-3 mb-6 rounded-xl ${
 							btnStyle === 'outlined-round' ? 'btn-select' : ''
 						}`}
-						style={{ borderColor: color }}
+						style={{ borderColor: btnColor, color: btnFontColor }}
 						onClick={() => {
 							setBtnStyle('outlined-round');
 							handleBtnStyleChange('outlined-round');
@@ -89,7 +94,7 @@ const Buttons = (props) => {
 						className={`border border-black px-14 py-3 mb-6 rounded-full ${
 							btnStyle === 'outlined-rounder' ? 'btn-select' : ''
 						}`}
-						style={{ borderColor: color }}
+						style={{ borderColor: btnColor, color: btnFontColor }}
 						onClick={() => {
 							setBtnStyle('outlined-rounder');
 							handleBtnStyleChange('outlined-rounder');
@@ -104,7 +109,7 @@ const Buttons = (props) => {
 						className={`border border-black px-14 py-3 mb-6 btn-shadow ${
 							btnStyle === 'shadowed' ? 'btn-select' : ''
 						}`}
-						style={{ backgroundColor: color }}
+						style={{ backgroundColor: btnColor, color: btnFontColor }}
 						onClick={() => {
 							setBtnStyle('shadowed');
 							handleBtnStyleChange('shadowed');
@@ -116,7 +121,7 @@ const Buttons = (props) => {
 						className={`border border-black px-14 py-3 mb-6 btn-shadow rounded-xl ${
 							btnStyle === 'shadowed-round' ? 'btn-select' : ''
 						}`}
-						style={{ backgroundColor: color }}
+						style={{ backgroundColor: btnColor, color: btnFontColor }}
 						onClick={() => {
 							setBtnStyle('shadowed-round');
 							handleBtnStyleChange('shadowed-round');
@@ -128,7 +133,7 @@ const Buttons = (props) => {
 						className={`border border-black px-14 py-3 mb-6 btn-shadow rounded-full ${
 							btnStyle === 'shadowed-rounder' ? 'btn-select' : ''
 						}`}
-						style={{ backgroundColor: color }}
+						style={{ backgroundColor: btnColor, color: btnFontColor }}
 						onClick={() => {
 							setBtnStyle('shadowed-rounder');
 							handleBtnStyleChange('shadowed-rounder');
@@ -145,16 +150,16 @@ const Buttons = (props) => {
 								setShowBtnColorPicker(true);
 							}}
 							className='mr-3 p-6 inline-flex rounded-md'
-							style={{ backgroundColor: color }}
+							style={{ backgroundColor: btnColor, color: btnFontColor }}
 						>
 							<span></span>
 						</button>
 						<input
 							className='px-2 bg-gray-200 rounded-md text-black'
-							value={color}
+							value={btnColor}
 							onChange={handleBtnInputChange}
 							type='text'
-							placeholder={color}
+							placeholder={btnColor}
 							onBlur={handleBtnInputBlur}
 						/>
 					</div>
@@ -162,6 +167,34 @@ const Buttons = (props) => {
 						<BlockPicker
 							color={btnColor}
 							onChangeComplete={handleBtnColorChange}
+						/>
+					) : null}
+				</div>
+				<div className='flex flex-col items-center mt-6'>
+					<h1 className='mb-2 mt-4 font-bold'>Button Font Color</h1>
+					<div className='flex'>
+						<button
+							onClick={() => {
+								setShowBtnFontColorPicker(true);
+							}}
+							className='mr-3 p-6 inline-flex rounded-md'
+							style={{ backgroundColor: btnFontColor }}
+						>
+							<span></span>
+						</button>
+						<input
+							className='px-2 bg-gray-200 rounded-md text-black'
+							value={btnFontColor}
+							onChange={handleBtnFontInputChange}
+							type='text'
+							placeholder={btnColor}
+							onBlur={handleBtnFontInputBlur}
+						/>
+					</div>
+					{showBtnFontColorPicker ? (
+						<BlockPicker
+							color={btnFontColor}
+							onChangeComplete={handleBtnFontColorChange}
 						/>
 					) : null}
 				</div>
