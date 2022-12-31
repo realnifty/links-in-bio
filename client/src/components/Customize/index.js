@@ -9,6 +9,7 @@ import defaultPFP from '../../images/default_pfp.png';
 
 import Background from '../Background';
 import Buttons from '../Buttons';
+import { useNavigate } from 'react-router-dom';
 
 const Customize = () => {
 
@@ -23,6 +24,8 @@ const Customize = () => {
 	const [showBgColorPicker, setShowBgColorPicker] = useState(false);
 
 	const [bgColor, setBgColor] = useState('#000000');
+
+	const navigate = useNavigate();
 
 	useEffect(() => {
     if (userData && userData.me && userData.me.backgroundColor) {
@@ -164,6 +167,12 @@ const Customize = () => {
 							id=''
 							placeholder={userData?.me?.biography}
 						></textarea>
+						<div className='flex font-lib text-lg text-white items-center justify-center bg-indigo-400 w-1/2 h-10 mt-4 rounded-full'>
+							<button className='w-full h-full' onClick={() => {navigate(`/${userData.me.username}`)}}>
+								<i className="bi bi-eye mr-1"></i>
+								 View Profile
+							</button>
+						</div>
 					</div>
 				</div>
 			</div>
