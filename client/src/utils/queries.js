@@ -21,3 +21,23 @@ export const GET_ME = gql`
 		}
 	}
 `;
+
+export const GET_USER = gql`
+	query User($username: String!) {
+		user(username: $username) {
+			backgroundColor
+			biography
+			buttonColor
+			buttonStyle
+			displayName
+			fontColor
+			links {
+				_id
+				title
+				url
+			}
+			username
+			profilePicture
+		}
+	}
+`;

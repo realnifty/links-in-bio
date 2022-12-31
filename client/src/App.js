@@ -6,6 +6,8 @@ import Home from './pages/Home';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
+import Profile from './pages/Profile';
+
 import Customize from './components/Customize';
 import Settings from './components/Settings';
 
@@ -40,6 +42,7 @@ function App() {
               <Route path='customize' element={<Customize />} />
               <Route path='settings' element={<Settings />} />
             </Route>
+            <Route path='/:username' element={<Profile />} />
           </Routes>
       </Router>
     </ApolloProvider>
