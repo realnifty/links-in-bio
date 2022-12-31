@@ -40,3 +40,11 @@ export const DELETE_LINK = gql`
 		}
 	}
 `;
+
+export const UPDATE_BG_COLOR = gql`
+  mutation CustomizeProfile($backgroundColor: String!) {
+		customizeProfile(backgroundColor: $backgroundColor) {
+			backgroundColor
+		}
+	}
+`

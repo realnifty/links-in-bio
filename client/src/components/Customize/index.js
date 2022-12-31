@@ -1,4 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+
+import { GET_ME } from '../../utils/queries';
+import { useQuery } from '@apollo/client';
+import { UPDATE_BG_COLOR } from '../../utils/mutations';
+import { useMutation } from '@apollo/client';
 
 import defaultPFP from '../../images/default_pfp.png';
 
@@ -6,17 +11,51 @@ import Background from '../Background';
 import Buttons from '../Buttons';
 
 const Customize = () => {
+
+	const { data: userData } = useQuery(GET_ME);
+
+	const [updateBgColor] = useMutation(UPDATE_BG_COLOR);
+
 	const [showBgColorPicker, setShowBgColorPicker] = useState(false);
 
 	const [bgColor, setBgColor] = useState('#000000');
 
-	const handleBgColorChange = (bgColor) => {
+	useEffect(() => {
+    if (userData && userData.me && userData.me.backgroundColor) {
+      setBgColor(userData.me.backgroundColor);
+    }
+  }, [userData]);
+
+	const handleBgColorChange = async (bgColor) => {
+		
+		try {
+			await updateBgColor({
+				variables: {
+					backgroundColor: bgColor.hex
+				}
+			})
+		} catch (e) {
+			console.error(e);
+		}
+
 		setBgColor(bgColor.hex);
 		setShowBgColorPicker(false);
 	};
 
 	const handleBgInputChange = (e) => {
 		setBgColor(e.target.value);
+	};
+
+	const handleBgInputBlur = async () => {
+		try {
+			await updateBgColor({
+				variables: {
+					backgroundColor: bgColor,
+				},
+			});
+		} catch (e) {
+			console.error(e);
+		}
 	};
 
 	const [showBtnColorPicker, setShowBtnColorPicker] = useState(false);
@@ -83,6 +122,7 @@ const Customize = () => {
 				showBgColorPicker={showBgColorPicker}
 				handleBgColorChange={handleBgColorChange}
 				handleBgInputChange={handleBgInputChange}
+				handleBgInputBlur={handleBgInputBlur}
 			/>
 			<Buttons
 				color={btnColor}
@@ -90,6 +130,8 @@ const Customize = () => {
 				showBtnColorPicker={showBtnColorPicker}
 				handleBtnColorChange={handleBtnColorChange}
 				handleBtnInputChange={handleBtnInputChange}
+				userBtnColor={userData?.me?.buttonColor}
+				userBtnStyle={userData?.me?.buttonStyle}
 			/>
 		</>
 	);

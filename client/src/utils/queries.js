@@ -8,6 +8,11 @@ export const GET_ME = gql`
 			email
 			profilePicture
 			displayName
+			biography
+			buttonStyle
+			buttonColor
+			backgroundColor
+			fontColor
 			links {
 				_id
 				title
