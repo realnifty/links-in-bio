@@ -81,3 +81,11 @@ export const UPDATE_BTN_FONT_COLOR = gql`
 		}
 	}
 `;
+
+export const UPDATE_PROFILE_FONT_COLOR = gql`
+	mutation CustomizeProfile($profileFontColor: String) {
+		customizeProfile(profileFontColor: $profileFontColor) {
+			profileFontColor
+		}
+	}
+`;

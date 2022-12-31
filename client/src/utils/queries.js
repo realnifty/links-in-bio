@@ -13,6 +13,7 @@ export const GET_ME = gql`
 			buttonColor
 			backgroundColor
 			fontColor
+			profileFontColor
 			links {
 				_id
 				title
@@ -31,6 +32,7 @@ export const GET_USER = gql`
 			buttonStyle
 			displayName
 			fontColor
+			profileFontColor
 			links {
 				_id
 				title

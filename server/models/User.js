@@ -59,6 +59,10 @@ const userSchema = new Schema(
 			type: String,
 			default: '#000000'
 		},
+		profileFontColor: {
+			type: String,
+			default: '#000000'
+		},
 		links: [
 			{
 				type: Schema.Types.ObjectId,

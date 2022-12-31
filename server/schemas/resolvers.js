@@ -151,10 +151,10 @@ const resolvers = {
     },
     customizeProfile: async (parent, args, contextValue) => {
       if (contextValue.user) {
-        const { backgroundColor, buttonColor, buttonStyle, fontColor } = args;
+        const { backgroundColor, buttonColor, buttonStyle, fontColor, profileFontColor } = args;
         const updatedUser = await User.findOneAndUpdate(
           { _id: contextValue.user._id },
-          { backgroundColor, buttonColor, buttonStyle, fontColor },
+          { backgroundColor, buttonColor, buttonStyle, fontColor, profileFontColor },
           { new: true }
         );
 

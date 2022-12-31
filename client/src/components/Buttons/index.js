@@ -187,7 +187,7 @@ const Buttons = (props) => {
 							value={btnFontColor}
 							onChange={handleBtnFontInputChange}
 							type='text'
-							placeholder={btnColor}
+							placeholder={btnFontColor}
 							onBlur={handleBtnFontInputBlur}
 						/>
 					</div>
