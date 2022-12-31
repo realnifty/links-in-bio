@@ -40,7 +40,7 @@ const Profile = () => {
       </div>
       <div className='flex flex-col items-center justify-center'>
         <div className='font-lib mb-4'>
-          <img className='h-24 w-24' src={defaultPFP} alt='default profile' />
+          <img className='h-24 w-24 mx-auto' src={defaultPFP} alt='default profile' />
           <h1 className='font-bold text-xl text-center mt-4 mb-2'>
             {user.displayName}
           </h1>
@@ -72,7 +72,7 @@ const Profile = () => {
                 ? 'btn-shadow rounded-full'
                 : ''
                 }`}
-                style={user?.buttonStyle === 'outlined' || user?.buttonStyle === 'outlined-round' || user?.buttonStyle === 'outlined-rounder' ? { borderColor: user.buttonColor } : { backgroundColor: user.buttonColor }}
+                style={user?.buttonStyle === 'outlined' || user?.buttonStyle === 'outlined-round' || user?.buttonStyle === 'outlined-rounder' ? { borderColor: user.buttonColor, color: user.fontColor } : { backgroundColor: user.buttonColor, color: user.fontColor }}
                 href={link.url}
                 target='_blank'
                 rel='noopener noreferrer'>
