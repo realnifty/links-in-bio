@@ -42,12 +42,12 @@ export const DELETE_LINK = gql`
 `;
 
 export const UPDATE_BG_COLOR = gql`
-  mutation CustomizeProfile($backgroundColor: String!) {
+	mutation CustomizeProfile($backgroundColor: String!) {
 		customizeProfile(backgroundColor: $backgroundColor) {
 			backgroundColor
 		}
 	}
-`
+`;
 
 export const UPDATE_BTN_STYLE = gql`
 	mutation CustomizeProfile($buttonStyle: String!) {
@@ -55,7 +55,7 @@ export const UPDATE_BTN_STYLE = gql`
 			buttonStyle
 		}
 	}
-`
+`;
 
 export const UPDATE_BTN_COLOR = gql`
 	mutation CustomizeProfile($buttonColor: String!) {
@@ -63,4 +63,13 @@ export const UPDATE_BTN_COLOR = gql`
 			buttonColor
 		}
 	}
-`
+`;
+
+export const UPDATE_PROFILE = gql`
+	mutation UpdateProfile($displayName: String, $biography: String) {
+		updateProfile(displayName: $displayName, biography: $biography) {
+			displayName
+			biography
+		}
+	}
+`;

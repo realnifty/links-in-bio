@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 import { GET_ME } from '../../utils/queries';
 import { useQuery } from '@apollo/client';
-import { UPDATE_BG_COLOR, UPDATE_BTN_STYLE, UPDATE_BTN_COLOR } from '../../utils/mutations';
+import { UPDATE_BG_COLOR, UPDATE_BTN_STYLE, UPDATE_BTN_COLOR, UPDATE_PROFILE } from '../../utils/mutations';
 import { useMutation } from '@apollo/client';
 
 import defaultPFP from '../../images/default_pfp.png';
@@ -20,6 +20,8 @@ const Customize = () => {
 	const [updateBtnStyle] = useMutation(UPDATE_BTN_STYLE);
 
 	const [updateBtnColor] = useMutation(UPDATE_BTN_COLOR);
+
+	const [updateProfile] = useMutation(UPDATE_PROFILE);
 
 	const [showBgColorPicker, setShowBgColorPicker] = useState(false);
 
@@ -124,6 +126,18 @@ const Customize = () => {
 		}
 	};
 
+	const handleProfileUpdateBlur = async (e) => {
+		try {
+			await updateProfile({
+				variables: {
+					[e.target.name]: e.target.value,
+				},
+			});
+		} catch (e) {
+			console.error(e);
+		}
+	};
+
 	// const [showFontColorPicker, setShowFontColorPicker] = useState(false);
 	
 	// const [fontColor, setFontColor] = useState('#000000');
@@ -157,15 +171,18 @@ const Customize = () => {
 						<p className='text-sm'>Display name</p>
 						<input
 							className='bg-gray-200 w-full rounded-xl px-2 py-2 mb-4 outline-1'
+							name='displayName'
 							type='text'
 							placeholder={userData?.me?.displayName}
+							onBlur={handleProfileUpdateBlur}
 						/>
 						<p className='text-sm'>Bio</p>
 						<textarea
 							className='bg-gray-200 w-full rounded-xl px-2 py-4 outline-1'
-							name=''
+							name='biography'
 							id=''
 							placeholder={userData?.me?.biography}
+							onBlur={handleProfileUpdateBlur}
 						></textarea>
 						<div className='flex font-lib text-lg text-white items-center justify-center bg-indigo-400 w-1/2 h-10 mt-4 rounded-full'>
 							<button className='w-full h-full' onClick={() => {navigate(`/${userData.me.username}`)}}>
