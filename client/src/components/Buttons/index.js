@@ -10,15 +10,11 @@ const Buttons = (props) => {
 		showBtnColorPicker,
 		handleBtnColorChange,
 		handleBtnInputChange,
-		userBtnColor,
-		userBtnStyle
+		btnStyle,
+		setBtnStyle,
+		handleBtnStyleChange,
+		handleBtnInputBlur
 	} = props;
-
-	const [selectedBtn, setSelectedBtn] = useState(userBtnStyle);
-
-	const handleBtnSelect = (btnStyle) => {
-		setSelectedBtn(btnStyle);
-	};
 
 	return (
 		<div className='p-4 font-lib'>
@@ -28,28 +24,37 @@ const Buttons = (props) => {
 				<div className='flex flex-col items-center justify-center text-white'>
 					<button
 						className={`bg-black px-14 py-3 mb-6 ${
-							selectedBtn === 'solid' ? 'btn-select' : ''
+							btnStyle === 'solid' ? 'btn-select' : ''
 						}`}
-						style={{ backgroundColor: userBtnColor ? userBtnColor : color }}
-						onClick={() => handleBtnSelect('solid')}
+						style={{ backgroundColor: color }}
+						onClick={() => {
+							setBtnStyle('solid');
+							handleBtnStyleChange('solid');
+						}}
 					>
 						Your Link Here
 					</button>
 					<button
 						className={`bg-black px-14 py-3 mb-6 rounded-xl ${
-							selectedBtn === 'solid-round' ? 'btn-select' : ''
+							btnStyle === 'solid-round' ? 'btn-select' : ''
 						}`}
-						style={{ backgroundColor: userBtnColor ? userBtnColor : color }}
-						onClick={() => handleBtnSelect('solid-round')}
+						style={{ backgroundColor: color }}
+						onClick={() => {
+							setBtnStyle('solid-round');
+							handleBtnStyleChange('solid-round');
+						}}
 					>
 						Your Link Here
 					</button>
 					<button
 						className={`bg-black px-14 py-3 mb-6 rounded-full ${
-							selectedBtn === 'solid-rounder' ? 'btn-select' : ''
+							btnStyle === 'solid-rounder' ? 'btn-select' : ''
 						}`}
-						style={{ backgroundColor: userBtnColor ? userBtnColor : color }}
-						onClick={() => handleBtnSelect('solid-rounder')}
+						style={{ backgroundColor: color }}
+						onClick={() => {
+							setBtnStyle('solid-rounder');
+							handleBtnStyleChange('solid-rounder');
+						}}
 					>
 						Your Link Here
 					</button>
@@ -58,28 +63,37 @@ const Buttons = (props) => {
 				<div className='flex flex-col items-center justify-center'>
 					<button
 						className={`border border-black px-14 py-3 mb-6 ${
-							selectedBtn === 'outlined' ? 'btn-select' : ''
+							btnStyle === 'outlined' ? 'btn-select' : ''
 						}`}
-						style={{ borderColor: userBtnColor ? userBtnColor : color }}
-						onClick={() => handleBtnSelect('outlined')}
+						style={{ borderColor: color }}
+						onClick={() => {
+							setBtnStyle('outlined');
+							handleBtnStyleChange('outlined');
+						}}
 					>
 						Your Link Here
 					</button>
 					<button
 						className={`border border-black px-14 py-3 mb-6 rounded-xl ${
-							selectedBtn === 'outlined-round' ? 'btn-select' : ''
+							btnStyle === 'outlined-round' ? 'btn-select' : ''
 						}`}
-						style={{ borderColor: userBtnColor ? userBtnColor : color }}
-						onClick={() => handleBtnSelect('outlined-round')}
+						style={{ borderColor: color }}
+						onClick={() => {
+							setBtnStyle('outlined-round');
+							handleBtnStyleChange('outlined-round');
+						}}
 					>
 						Your Link Here
 					</button>
 					<button
 						className={`border border-black px-14 py-3 mb-6 rounded-full ${
-							selectedBtn === 'outlined-rounder' ? 'btn-select' : ''
+							btnStyle === 'outlined-rounder' ? 'btn-select' : ''
 						}`}
-						style={{ borderColor: userBtnColor ? userBtnColor : color }}
-						onClick={() => handleBtnSelect('outlined-rounder')}
+						style={{ borderColor: color }}
+						onClick={() => {
+							setBtnStyle('outlined-rounder');
+							handleBtnStyleChange('outlined-rounder');
+						}}
 					>
 						Your Link Here
 					</button>
@@ -88,28 +102,37 @@ const Buttons = (props) => {
 				<div className='flex flex-col items-center justify-center text-white'>
 					<button
 						className={`border border-black px-14 py-3 mb-6 btn-shadow ${
-							selectedBtn === 'shadowed' ? 'btn-select' : ''
+							btnStyle === 'shadowed' ? 'btn-select' : ''
 						}`}
-						style={{ backgroundColor: userBtnColor ? userBtnColor : color }}
-						onClick={() => handleBtnSelect('shadowed')}
+						style={{ backgroundColor: color }}
+						onClick={() => {
+							setBtnStyle('shadowed');
+							handleBtnStyleChange('shadowed');
+						}}
 					>
 						Your Link Here
 					</button>
 					<button
 						className={`border border-black px-14 py-3 mb-6 btn-shadow rounded-xl ${
-							selectedBtn === 'shadowed-round' ? 'btn-select' : ''
+							btnStyle === 'shadowed-round' ? 'btn-select' : ''
 						}`}
-						style={{ backgroundColor: userBtnColor ? userBtnColor : color }}
-						onClick={() => handleBtnSelect('shadowed-round')}
+						style={{ backgroundColor: color }}
+						onClick={() => {
+							setBtnStyle('shadowed-round');
+							handleBtnStyleChange('shadowed-round');
+						}}
 					>
 						Your Link Here
 					</button>
 					<button
 						className={`border border-black px-14 py-3 mb-6 btn-shadow rounded-full ${
-							selectedBtn === 'shadowed-rounder' ? 'btn-select' : ''
+							btnStyle === 'shadowed-rounder' ? 'btn-select' : ''
 						}`}
-						style={{ backgroundColor: userBtnColor ? userBtnColor : color }}
-						onClick={() => handleBtnSelect('shadowed-rounder')}
+						style={{ backgroundColor: color }}
+						onClick={() => {
+							setBtnStyle('shadowed-rounder');
+							handleBtnStyleChange('shadowed-rounder');
+						}}
 					>
 						Your Link Here
 					</button>
@@ -122,7 +145,7 @@ const Buttons = (props) => {
 								setShowBtnColorPicker(true);
 							}}
 							className='mr-3 p-6 inline-flex rounded-md'
-							style={{ backgroundColor: userBtnColor ? userBtnColor : color }}
+							style={{ backgroundColor: color }}
 						>
 							<span></span>
 						</button>
@@ -131,16 +154,14 @@ const Buttons = (props) => {
 							value={color}
 							onChange={handleBtnInputChange}
 							type='text'
-							placeholder={userBtnColor ? userBtnColor : color}
+							placeholder={color}
+							onBlur={handleBtnInputBlur}
 						/>
 					</div>
 					{showBtnColorPicker ? (
 						<BlockPicker
 							color={btnColor}
 							onChangeComplete={handleBtnColorChange}
-							onBlur={() => {
-								setShowBtnColorPicker(false);
-							}}
 						/>
 					) : null}
 				</div>

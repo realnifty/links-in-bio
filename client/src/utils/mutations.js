@@ -48,3 +48,19 @@ export const UPDATE_BG_COLOR = gql`
 		}
 	}
 `
+
+export const UPDATE_BTN_STYLE = gql`
+	mutation CustomizeProfile($buttonStyle: String!) {
+		customizeProfile(buttonStyle: $buttonStyle) {
+			buttonStyle
+		}
+	}
+`
+
+export const UPDATE_BTN_COLOR = gql`
+	mutation CustomizeProfile($buttonColor: String!) {
+		customizeProfile(buttonColor: $buttonColor) {
+			buttonColor
+		}
+	}
+`

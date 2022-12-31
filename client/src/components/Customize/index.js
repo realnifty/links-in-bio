@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 import { GET_ME } from '../../utils/queries';
 import { useQuery } from '@apollo/client';
-import { UPDATE_BG_COLOR } from '../../utils/mutations';
+import { UPDATE_BG_COLOR, UPDATE_BTN_STYLE, UPDATE_BTN_COLOR } from '../../utils/mutations';
 import { useMutation } from '@apollo/client';
 
 import defaultPFP from '../../images/default_pfp.png';
@@ -15,6 +15,10 @@ const Customize = () => {
 	const { data: userData } = useQuery(GET_ME);
 
 	const [updateBgColor] = useMutation(UPDATE_BG_COLOR);
+
+	const [updateBtnStyle] = useMutation(UPDATE_BTN_STYLE);
+
+	const [updateBtnColor] = useMutation(UPDATE_BTN_COLOR);
 
 	const [showBgColorPicker, setShowBgColorPicker] = useState(false);
 
@@ -58,17 +62,63 @@ const Customize = () => {
 		}
 	};
 
+	const [btnStyle, setBtnStyle] = useState('solid');
+
+	useEffect(() => {
+		if (userData && userData.me && userData.me.buttonStyle) {
+			setBtnStyle(userData.me.buttonStyle);
+		}
+	}, [userData]);
+
+	const handleBtnStyleChange = async (btnStyle) => {
+		try {
+			await updateBtnStyle({
+				variables: { buttonStyle: btnStyle },
+			});
+		} catch (e) {
+			console.error(e);
+		}
+	};
+
 	const [showBtnColorPicker, setShowBtnColorPicker] = useState(false);
 
 	const [btnColor, setBtnColor] = useState('#000000');
 
-	const handleBtnColorChange = (btnColor) => {
+	useEffect(() => {
+		if (userData && userData.me && userData.me.buttonColor) {
+			setBtnColor(userData.me.buttonColor);
+		}
+	}, [userData]);
+
+	const handleBtnColorChange = async (btnColor) => {
+		
 		setBtnColor(btnColor.hex);
 		setShowBtnColorPicker(false);
+
+		try {
+			await updateBtnColor({
+				variables: { buttonColor: btnColor.hex }
+			})
+		} catch (e) {
+			console.error(e);
+		}
+
 	};
 
 	const handleBtnInputChange = (e) => {
 		setBtnColor(e.target.value);
+	};
+
+	const handleBtnInputBlur = async () => {
+		try {
+			await updateBtnColor({
+				variables: {
+					buttonColor: btnColor,
+				},
+			});
+		} catch (e) {
+			console.error(e);
+		}
 	};
 
 	// const [showFontColorPicker, setShowFontColorPicker] = useState(false);
@@ -131,8 +181,10 @@ const Customize = () => {
 				showBtnColorPicker={showBtnColorPicker}
 				handleBtnColorChange={handleBtnColorChange}
 				handleBtnInputChange={handleBtnInputChange}
-				userBtnColor={userData?.me?.buttonColor}
-				userBtnStyle={userData?.me?.buttonStyle}
+				btnStyle={btnStyle}
+				setBtnStyle={setBtnStyle}
+				handleBtnStyleChange={handleBtnStyleChange}
+				handleBtnInputBlur={handleBtnInputBlur}
 			/>
 		</>
 	);
