@@ -1,6 +1,5 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
-const defaultPFP = '../images/default_pfp.png';
 
 const userSchema = new Schema(
 	{
@@ -41,7 +40,7 @@ const userSchema = new Schema(
 		},
 		profilePicture: {
 			type: String,
-			default: defaultPFP
+			default: 'https://res.cloudinary.com/dcellgg4h/image/upload/v1672599553/default_pfp_sm2co4.png'
 		},
 		buttonStyle: {
 			type: String,

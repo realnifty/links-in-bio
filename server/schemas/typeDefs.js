@@ -37,7 +37,7 @@ const typeDefs = gql`
     updateLink(_id: ID!, title: String, url: String): Link
     deleteLink(_id: ID!): Link
     updateProfile(displayName: String, biography: String): User
-    customizeProfile(buttonStyle: String, buttonColor: String, backgroundColor: String, fontColor: String, profileFontColor: String): User
+    customizeProfile(buttonStyle: String, buttonColor: String, backgroundColor: String, fontColor: String, profileFontColor: String, profilePicture: String): User
     deleteMe: User
   }
 

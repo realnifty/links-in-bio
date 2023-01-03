@@ -90,3 +90,11 @@ export const UPDATE_PROFILE_FONT_COLOR = gql`
 		}
 	}
 `;
+
+export const UPDATE_PROFILE_PICTURE = gql`
+	mutation CustomizeProfile($profilePicture: String) {
+		customizeProfile(profilePicture: $profilePicture) {
+			profilePicture
+		}
+	}
+`;

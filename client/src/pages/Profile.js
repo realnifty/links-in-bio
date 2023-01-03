@@ -48,7 +48,7 @@ const Profile = () => {
       </div>
       <div className='flex flex-col items-center justify-center'>
         <div className='font-lib mb-4'>
-          <img className='h-24 w-24 mx-auto' src={defaultPFP} alt='default profile' />
+          <img className='h-24 w-24 mx-auto rounded-full' src={user?.profilePicture ? user?.profilePicture : defaultPFP} alt='default profile' />
           <h1 className='font-bold text-xl text-center mt-4 mb-2' style={{color: user?.profileFontColor}}>
             {user.displayName}
           </h1>

@@ -1,18 +1,24 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 import { GET_ME } from '../../utils/queries';
 import { useQuery } from '@apollo/client';
-import { UPDATE_BG_COLOR, UPDATE_BTN_STYLE, UPDATE_BTN_COLOR, UPDATE_PROFILE, UPDATE_BTN_FONT_COLOR } from '../../utils/mutations';
+import {
+	UPDATE_BG_COLOR,
+	UPDATE_BTN_STYLE,
+	UPDATE_BTN_COLOR,
+	UPDATE_PROFILE,
+	UPDATE_BTN_FONT_COLOR,
+	UPDATE_PROFILE_PICTURE,
+} from '../../utils/mutations';
 import { useMutation } from '@apollo/client';
-
-import defaultPFP from '../../images/default_pfp.png';
 
 import Background from '../Background';
 import Buttons from '../Buttons';
 import Fonts from '../Fonts';
 
-const Customize = () => {
+import defaultPFP from '../../images/default_pfp.png';
 
+const Customize = () => {
 	const { data: userData } = useQuery(GET_ME);
 
 	const [updateBgColor] = useMutation(UPDATE_BG_COLOR);
@@ -25,24 +31,25 @@ const Customize = () => {
 
 	const [updateBtnFontColor] = useMutation(UPDATE_BTN_FONT_COLOR);
 
+	const [updateProfilePicture] = useMutation(UPDATE_PROFILE_PICTURE);
+
 	const [showBgColorPicker, setShowBgColorPicker] = useState(false);
 
 	const [bgColor, setBgColor] = useState('#000000');
 
 	useEffect(() => {
-    if (userData && userData.me && userData.me.backgroundColor) {
-      setBgColor(userData.me.backgroundColor);
-    }
-  }, [userData]);
+		if (userData && userData.me && userData.me.backgroundColor) {
+			setBgColor(userData.me.backgroundColor);
+		}
+	}, [userData]);
 
 	const handleBgColorChange = async (bgColor) => {
-		
 		try {
 			await updateBgColor({
 				variables: {
-					backgroundColor: bgColor.hex
-				}
-			})
+					backgroundColor: bgColor.hex,
+				},
+			});
 		} catch (e) {
 			console.error(e);
 		}
@@ -96,18 +103,16 @@ const Customize = () => {
 	}, [userData]);
 
 	const handleBtnColorChange = async (btnColor) => {
-		
 		setBtnColor(btnColor.hex);
 		setShowBtnColorPicker(false);
 
 		try {
 			await updateBtnColor({
-				variables: { buttonColor: btnColor.hex }
-			})
+				variables: { buttonColor: btnColor.hex },
+			});
 		} catch (e) {
 			console.error(e);
 		}
-
 	};
 
 	const handleBtnInputChange = (e) => {
@@ -153,8 +158,7 @@ const Customize = () => {
 			await updateBtnFontColor({
 				variables: { fontColor: btnFontColor.hex },
 			});
-		}
-		catch (e) {
+		} catch (e) {
 			console.error(e);
 		}
 		setBtnFontColor(btnFontColor.hex);
@@ -177,18 +181,67 @@ const Customize = () => {
 		}
 	};
 
+	const [profilePicture, setProfilePicture] = useState(null);
+
+	const fileInputRef = useRef();
+	
+	const handleUploadClick = () => {
+		fileInputRef.current.click();
+	}
+
+	const handleFileInputChange = (e) => {
+		const file = e.target.files[0];
+		previewFile(file);
+	};
+
+	const handleUpload = async (profilePicture) => {
+		try {
+			await updateProfilePicture({
+				variables: { profilePicture: profilePicture },
+			});
+		} catch (e) {
+			console.error(e);
+		}
+	};
+	
+	const previewFile = (file) => {
+		const reader = new FileReader();
+		reader.readAsDataURL(file);
+		reader.onloadend = () => {
+			setProfilePicture(reader.result);
+			handleUpload(reader.result);
+		};
+	};
+
+
 	return (
 		<>
 			<div className='p-4 font-lib'>
 				<h1 className='font-extrabold text-xl mb-4'>Profile</h1>
 				<div className='flex flex-col bg-white rounded-xl'>
 					<div className='flex items-center justify-between pt-6 px-6'>
-						<img className='h-28' src={defaultPFP} alt='default profile' />
+						<img
+							className='h-28 w-28 rounded-full'
+							src={profilePicture === null ? (userData?.me?.profilePicture ? userData?.me?.profilePicture : defaultPFP) : profilePicture}
+							alt='default profile'
+						/>
 						<div className='flex flex-col font-bold'>
-							<button className='bg-indigo-400 px-3 py-2 rounded-full mb-3 text-white'>
-								Upload image
-							</button>
-							<button className='bg-gray-300 px-3 py-2 rounded-full'>
+							<input
+									ref={fileInputRef}
+									name='image'
+									type='file'
+									accept='image/*'
+									style={{ display: 'none' }}
+									onChange={handleFileInputChange}
+								/>
+								<button className='bg-indigo-400 px-3 py-2 rounded-full mb-3 text-white' onClick={handleUploadClick}>
+									Select image
+								</button>
+							<button className='bg-gray-300 px-3 py-2 rounded-full' onClick={() => {
+								setProfilePicture(null);
+								handleUpload(null);
+								window.location.reload();
+							}}>
 								Remove image
 							</button>
 						</div>
@@ -211,9 +264,14 @@ const Customize = () => {
 							onBlur={handleProfileUpdateBlur}
 						></textarea>
 						<div className='flex font-lib text-lg text-white items-center justify-center bg-indigo-400 w-1/2 h-10 mt-4 rounded-full'>
-							<button className='w-full h-full' onClick={() => { window.location.assign(`/${userData.me.username}`) }}>
-								<i className="bi bi-eye mr-1"></i>
-								 View Profile
+							<button
+								className='w-full h-full'
+								onClick={() => {
+									window.location.assign(`/${userData.me.username}`);
+								}}
+							>
+								<i className='bi bi-eye mr-1'></i>
+								View Profile
 							</button>
 						</div>
 					</div>
