@@ -70,12 +70,12 @@ const Signup = () => {
 			<h1 className='font-unbounded text-2xl font-extrabold py-4'>
 				Create an account
 			</h1>
-			<p className='font-lib pb-4'>
+			<p className='font-sora pb-4'>
 				Choose a username. You can change it later if you'd like.
 			</p>
 			<form onSubmit={handleFormSubmit}>
 				<input
-					className='bg-gray-200 p-3 mb-4 w-full rounded-full font-lib outline-gray-300'
+					className='bg-gray-200 p-3 mb-4 w-full rounded-full font-sora outline-gray-300'
 					type='username'
 					name='username'
 					id='username'
@@ -84,7 +84,7 @@ const Signup = () => {
 					onChange={handleChange}
 				/>
 				<input
-					className='bg-gray-200 p-3 mb-4 w-full rounded-full font-lib outline-gray-300'
+					className='bg-gray-200 p-3 mb-4 w-full rounded-full font-sora outline-gray-300'
 					type='email'
 					name='email'
 					id='email'
@@ -93,7 +93,7 @@ const Signup = () => {
 					onChange={handleChange}
 				/>
 				<input
-					className='bg-gray-200 p-3 w-full rounded-full font-lib outline-gray-300'
+					className='bg-gray-200 p-3 w-full rounded-full font-sora outline-gray-300'
 					type='password'
 					name='password'
 					id='password'
@@ -105,22 +105,22 @@ const Signup = () => {
 					}}
 				/>
 				{password !== '' && !validatePassword(password) ? (
-					<p className='font-lib text-red-600 pt-4'>
+					<p className='font-sora text-red-600 pt-4'>
 						Password must contain at least one lowercase letter, one uppercase
 						letter, one digit, one special character, and must be 8 - 30
 						characters long.
 					</p>
 				) : (
-					password !== '' && <p className='font-lib text-green-600 pt-4'>✓</p>
+					password !== '' && <p className='font-sora text-green-600 pt-4'>✓</p>
 				)}
 				{error && (
-					<div className='font-lib text-red-600 pt-4'>Sign up failed</div>
+					<div className='font-sora text-red-600 pt-4'>Sign up failed</div>
 				)}
-				<p className='font-lib pt-4'>
+				<p className='font-sora pt-4'>
 					By creating your account you agree to the Terms of Service and our
 					Privacy Notice.
 				</p>
-				<p className='font-lib pt-4'>
+				<p className='font-sora pt-4'>
 					Already have an account? Log in{' '}
 					<span className='text-indigo-400 underline'>
 						<Link to='/login'>here.</Link>

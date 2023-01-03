@@ -60,12 +60,12 @@ const Dashboard = () => {
 				<div className='flex justify-between px-4 items-center py-2 divide-under bg-white'>
 					<img className='h-12' src={logo} alt='linkify logo' />
 					<div className='px-4 py-3 border border-gray-300 rounded-full'>
-						<button className='font-lib'>
+						<button className='font-sora'>
 							<i className='bi bi-share pr-1'></i> Share
 						</button>
 					</div>
 				</div>
-				<div className='font-lib text-center flex divide-under items-center justify-around bg-white'>
+				<div className='font-sora text-center flex divide-under items-center justify-around bg-white'>
 					<div
 						className={`py-2 w-1/3 ${
 							activeTab === 'links' ? 'active-tab' : 'text-gray-400'
@@ -106,7 +106,7 @@ const Dashboard = () => {
 			</div>
 			<div className='overflow-scroll'>
 				{activeTab === 'links' && (
-					<div className='flex flex-col items-center justify-center p-4 font-lib'>
+					<div className='flex flex-col items-center justify-center p-4 font-sora'>
 						<button
 							className='bg-indigo-400 text-white w-full py-2 mb-4 rounded-full flex justify-center'
 							onClick={toggleLinkForm}

@@ -22,9 +22,9 @@ const Buttons = (props) => {
 	} = props;
 
 	return (
-		<div className='p-4 font-lib'>
+		<div className='p-4 font-sora'>
 			<h1 className='font-extrabold text-xl mb-4'>Buttons</h1>
-			<div className='flex flex-col bg-white rounded-xl py-6'>
+			<div className='flex flex-col bg-white rounded-xl py-6 shadow-md'>
 				<h1 className='ml-6 my-6 font-bold'>Solid</h1>
 				<div className='flex flex-col items-center justify-center text-white'>
 					<button

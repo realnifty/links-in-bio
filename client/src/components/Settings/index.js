@@ -2,22 +2,22 @@ import Auth from '../../utils/auth';
 
 const Settings = () => {
   return (
-    <div className="p-4 font-lib">
-      <h1 className="font-extrabold text-xl">Account</h1>
-      <div className="mx-3 mb-4 text-md flex flex-col">
-        <button className="my-1 py-3 active-tab w-full text-start"><span><i className="bi bi-person mr-2"></i></span>My account</button>
-        <button className="my-1 py-3 active-tab w-full text-start"><span><i className="bi bi-cash mr-2"></i></span>Billing</button>
-        <button className="my-1 py-3 active-tab w-full text-start"><span><i className="bi bi-gear mr-2"></i></span>Cookie preferences</button>
-        <button className="my-1 py-3 active-tab w-full text-start" onClick={Auth.logout}><span><i className="bi bi-box-arrow-in-left mr-2"></i></span>Log out</button>
-        <button className="my-1 py-3 active-tab w-full text-start"><span><i className="bi bi-person-x-fill mr-2"></i></span>Delete account</button>
+    <div className="p-4 font-sora">
+      <h1 className="mb-4 font-extrabold text-xl mb-4">Account</h1>
+      <div className="text-md flex flex-col bg-white rounded-xl shadow-md divide-y-2">
+        <button className="py-4 w-full text-start"><span><i className="ml-4 bi bi-person mr-2"></i></span>My account</button>
+        <button className="py-4 w-full text-start"><span><i className="ml-4 bi bi-cash mr-2"></i></span>Billing</button>
+        <button className="py-4 w-full text-start"><span><i className="ml-4 bi bi-gear mr-2"></i></span>Cookie preferences</button>
+        <button className="py-4 w-full text-start" onClick={Auth.logout}><span><i className="ml-4 bi bi-box-arrow-in-left mr-2"></i></span>Log out</button>
+        <button className="py-4 w-full text-start"><span><i className="ml-4 bi bi-person-x-fill mr-2"></i></span>Delete account</button>
       </div>
-      <h1 className="font-extrabold text-xl">Support</h1>
-      <div className="mx-3 mb-4 text-md flex flex-col items-start">
-        <button className="my-1 py-3 active-tab w-full text-start"><span><i className="bi bi-envelope mr-2"></i></span>Contact</button>
-        <button className="my-1 py-3 active-tab w-full text-start"><span><i className="bi bi-info-circle mr-2"></i></span>Help topics</button>
-        <button className="my-1 py-3 active-tab w-full text-start"><span><i className="bi bi-chat-heart mr-2"></i></span>Submit feedback</button>
-        <button className="my-1 py-3 active-tab w-full text-start" onClick={Auth.logout}><span><i className="bi bi-question-circle mr-2"></i></span>FAQs</button>
-        <button className="my-1 py-3 active-tab w-full text-start"><span><i className="bi bi-file-lock mr-2"></i></span>Privacy Notice</button>
+      <h1 className="my-4 font-extrabold text-xl">Support</h1>
+      <div className="text-md flex flex-col items-start bg-white rounded-xl shadow-md divide-y-2">
+        <button className="py-4 w-full text-start"><span><i className="ml-4 bi bi-envelope mr-2"></i></span>Contact</button>
+        <button className="py-4 w-full text-start"><span><i className="ml-4 bi bi-info-circle mr-2"></i></span>Help topics</button>
+        <button className="py-4 w-full text-start"><span><i className="ml-4 bi bi-chat-heart mr-2"></i></span>Submit feedback</button>
+        <button className="py-4 w-full text-start" onClick={Auth.logout}><span><i className="ml-4 bi bi-question-circle mr-2"></i></span>FAQs</button>
+        <button className="py-4 w-full text-start"><span><i className="ml-4 bi bi-file-lock mr-2"></i></span>Privacy Notice</button>
       </div>
     </div >
   )

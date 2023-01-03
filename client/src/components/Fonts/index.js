@@ -58,9 +58,9 @@ const Fonts = () => {
 
 
 	return (
-		<div className='p-4 font-lib'>
+		<div className='p-4 font-sora'>
 			<h1 className='font-extrabold text-xl mb-4'>Fonts</h1>
-			<div className='flex flex-col bg-white rounded-xl py-6'>
+			<div className='flex flex-col bg-white rounded-xl py-6 shadow-md'>
 				<div className='flex flex-col items-center'>
 					<h1 className='font-bold mb-2'>Profile Font Color</h1>
 					<div className='flex'>

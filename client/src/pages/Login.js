@@ -61,7 +61,7 @@ const Login = () => {
 			</h1>
 			<form onSubmit={handleFormSubmit}>
 				<input
-					className="bg-gray-200 p-3 mb-4 w-full rounded-full font-lib outline-gray-300"
+					className="bg-gray-200 p-3 mb-4 w-full rounded-full font-sora outline-gray-300"
 					type="username"
 					name="username"
 					id="username"
@@ -70,7 +70,7 @@ const Login = () => {
 					onChange={handleChange}
 				/>
 				<input
-					className="bg-gray-200 p-3 w-full rounded-full font-lib outline-gray-300"
+					className="bg-gray-200 p-3 w-full rounded-full font-sora outline-gray-300"
 					type="password"
 					name="password"
 					id="password"
@@ -79,17 +79,17 @@ const Login = () => {
 					onChange={handleChange}
 				/>
 				{error && (
-					<div className="font-lib text-red-600 pt-4">Login failed</div>
+					<div className="font-sora text-red-600 pt-4">Login failed</div>
 				)}
 				{error && error.message === 'User not found.' ? (
-					<div className="font-lib text-red-600 pt-4">User not found</div>
+					<div className="font-sora text-red-600 pt-4">User not found</div>
 				) : null}
 				{error && error.message === 'Incorrect credentials.' ? (
-					<div className="font-lib text-red-600 pt-4">
+					<div className="font-sora text-red-600 pt-4">
 						Incorrect credentials
 					</div>
 				) : null}
-				<p className="font-lib pt-4">
+				<p className="font-sora pt-4">
 					Don't have an account? Sign up{' '}
 					<span className="text-indigo-400 underline">
 						<Link to="/signup">here.</Link>

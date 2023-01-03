@@ -216,9 +216,9 @@ const Customize = () => {
 
 	return (
 		<>
-			<div className='p-4 font-lib'>
+			<div className='p-4 font-sora'>
 				<h1 className='font-extrabold text-xl mb-4'>Profile</h1>
-				<div className='flex flex-col bg-white rounded-xl'>
+				<div className='flex flex-col bg-white rounded-xl shadow-md'>
 					<div className='flex items-center justify-between pt-6 px-6'>
 						<img
 							className='h-28 w-28 rounded-full'
@@ -263,7 +263,7 @@ const Customize = () => {
 							placeholder={userData?.me?.biography}
 							onBlur={handleProfileUpdateBlur}
 						></textarea>
-						<div className='flex font-lib text-lg text-white items-center justify-center bg-indigo-400 w-1/2 h-10 mt-4 rounded-full'>
+						<div className='flex font-sora text-lg text-white items-center justify-center bg-indigo-400 w-1/2 h-10 mt-4 rounded-full'>
 							<button
 								className='w-full h-full'
 								onClick={() => {

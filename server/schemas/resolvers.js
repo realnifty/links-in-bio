@@ -187,7 +187,7 @@ const resolvers = {
         }
 
         if (profilePicture === null) {
-          updatedFields.profilePicture = null;
+          updatedFields.profilePicture = 'https://res.cloudinary.com/dcellgg4h/image/upload/v1672599553/default_pfp_sm2co4.png';
         }
     
         const updatedUser = await User.findOneAndUpdate(

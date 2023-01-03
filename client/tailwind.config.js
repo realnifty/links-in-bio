@@ -5,7 +5,7 @@ module.exports = {
     extend: {
       fontFamily: {
         unbounded: "'Unbounded', sans-serif",
-        lib: "'Libre Franklin', sans-serif",
+        sora: "'Sora', sans-serif",
       },
     },
   },

@@ -25,7 +25,7 @@ const Home = () => {
 				<h1 className='font-unbounded font-extrabold text-4xl pb-5'>
 					Reach a new level of engagement. All your links in one.
 				</h1>
-				<p className='font-lib'>
+				<p className='font-sora'>
 					Organize all of your social media and other important links in one
 					place with Linkify. Create a custom link to share with anyone.
 				</p>
