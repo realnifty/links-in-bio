@@ -7,6 +7,7 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Profile from './pages/Profile';
+import Privacy from './pages/Privacy';
 
 import Customize from './components/Customize';
 import Settings from './components/Settings';
@@ -50,7 +51,9 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/signup" element={<Signup />} />
             <Route path='/login' element={<Login />} />
+            <Route path='/privacy' element={<Privacy />} />
             <Route path='/dashboard' element={<Dashboard />}>
+              
               <Route path='customize' element={<Customize />} />
               <Route path='settings' element={<Settings />} />
             </Route>
