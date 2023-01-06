@@ -37,8 +37,23 @@
   }
 }
 
+@keyframes share-appear {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%);
+  }
+}
+
 .appear {
   animation: appear 0.5s;
+}
+
+.share-appear {
+  animation: share-appear 0.5s;
 }
 
 .divide-under {

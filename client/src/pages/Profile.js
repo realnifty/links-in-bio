@@ -9,6 +9,8 @@ import Auth from '../utils/auth';
 import logo from '../images/link.png';
 import defaultPFP from '../images/default_pfp.png';
 
+import Share from '../components/Share';
+
 const Profile = () => {
 	const { username: userParam } = useParams();
 
@@ -22,6 +24,8 @@ const Profile = () => {
 
 	const [fadeIn, setFadeIn] = useState(false);
 
+	const [showShare, setShowShare] = useState(false);
+
 	useEffect(() => {
 		setFadeIn(true);
 	}, []);
@@ -31,6 +35,11 @@ const Profile = () => {
 			className={`min-h-screen p-6 fade-in ${fadeIn ? 'visible' : ''}`}
 			style={{ backgroundColor: user.backgroundColor }}
 		>
+			<Share
+					showShare={showShare}
+					setShowShare={setShowShare}
+					user={user}
+				/>
 			<div
 				className={`flex ${
 					Auth.loggedIn() ? 'justify-between' : 'justify-end'
@@ -48,7 +57,7 @@ const Profile = () => {
 					</div>
 				)}
 				<div className='bg-white w-10 h-10 flex items-center justify-center rounded-full border border-1 border-black/25'>
-					<button>
+					<button onClick={() => setShowShare(true)}>
 						<i className='bi bi-share'></i>
 					</button>
 				</div>

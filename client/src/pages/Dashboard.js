@@ -7,8 +7,10 @@ import { useQuery } from '@apollo/client';
 import Auth from '../utils/auth';
 
 import logo from '../images/link.png';
+
 import LinkForm from '../components/LinkForm';
 import MyLinks from '../components/MyLinks';
+import Share from '../components/Share';
 
 const Dashboard = () => {
 	const navigate = useNavigate();
@@ -22,6 +24,8 @@ const Dashboard = () => {
 	const [fadeIn, setFadeIn] = useState(false);
 
 	const [activeTab, setActiveTab] = useState('links');
+
+	const [showShare, setShowShare] = useState(false);
 
 	const toggleLinkForm = () => {
 		setLinkFormVisible(!linkFormVisible);
@@ -53,17 +57,27 @@ const Dashboard = () => {
 
 	return (
 		<main
-			className={`min-h-screen fade-in bg-slate-200 ${fadeIn ? 'visible' : ''}`}
+			className={`min-h-screen fade-in bg-slate-200 relative ${fadeIn ? 'visible' : ''}`}
 		>
 			<div className='sticky inset-0 z-20 appear'>
 				<div className='flex justify-between px-4 items-center py-2 divide-under bg-white'>
 					<img className='h-12' src={logo} alt='linkify logo' />
 					<div className='px-4 py-3 border border-gray-300 rounded-full'>
-						<button className='font-sora'>
+						<button
+							className='font-sora'
+							onClick={() => {
+								setShowShare(true);
+							}}
+						>
 							<i className='bi bi-share pr-1'></i> Share
 						</button>
 					</div>
 				</div>
+				<Share
+					showShare={showShare}
+					setShowShare={setShowShare}
+					userData={userData}
+				/>
 				<div className='font-sora text-center flex divide-under items-center justify-around bg-white'>
 					<div
 						className={`py-2 w-1/3 ${
