@@ -63,7 +63,7 @@ const Signup = () => {
 
 	return (
 		<main className={`px-4 py-6 h-screen fade-in ${fadeIn ? 'visible' : ''}`}>
-			<div className='flex items-center'>
+			<div className='flex items-center' onClick={() => {navigate('/')}}>
 				<img className='h-8' src={logo} alt='linkify logo'></img>
 				<h1 className='font-unbounded text-xl'>Linkify</h1>
 			</div>

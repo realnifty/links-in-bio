@@ -31,9 +31,13 @@ const Profile = () => {
 			className={`min-h-screen p-6 fade-in ${fadeIn ? 'visible' : ''}`}
 			style={{ backgroundColor: user.backgroundColor }}
 		>
-			<div className='flex justify-between'>
+			<div
+				className={`flex ${
+					Auth.loggedIn() ? 'justify-between' : 'justify-end'
+				}`}
+			>
 				{Auth.loggedIn() && (
-					<div className='bg-white w-10 h-10 flex items-center justify-center rounded-full border border-1 border-black/25 self-end'>
+					<div className='bg-white w-10 h-10 flex items-center justify-center rounded-full border border-1 border-black/25'>
 						<button
 							onClick={() => {
 								navigate('/dashboard/customize');
@@ -43,7 +47,7 @@ const Profile = () => {
 						</button>
 					</div>
 				)}
-				<div className='bg-white w-10 h-10 flex items-center justify-center rounded-full border border-1 border-black/25 self-end'>
+				<div className='bg-white w-10 h-10 flex items-center justify-center rounded-full border border-1 border-black/25'>
 					<button>
 						<i className='bi bi-share'></i>
 					</button>
@@ -108,7 +112,12 @@ const Profile = () => {
 					))}
 				</div>
 			</div>
-			<div className='flex items-center justify-center absolute inset-x-0 bottom-6'>
+			<div
+				className='flex items-center justify-center absolute inset-x-0 bottom-6'
+				onClick={() => {
+					navigate('/');
+				}}
+			>
 				<img className='sticky h-10' src={logo} alt='' />
 				<h1 className='font-unbounded text-2xl'>Linkify</h1>
 			</div>

@@ -1,6 +1,4 @@
-import { useState } from 'react';
-
-import { BlockPicker } from 'react-color';
+import { SwatchesPicker } from 'react-color';
 
 const Buttons = (props) => {
 	const {
@@ -19,16 +17,18 @@ const Buttons = (props) => {
 		handleBtnFontColorChange,
 		handleBtnFontInputChange,
 		handleBtnFontInputBlur,
+		toggleBtnColorPicker,
+		toggleBtnFontColorPicker,
 	} = props;
 
 	return (
-		<div className='p-4 font-sora'>
+		<div className='p-4 font-sora appear'>
 			<h1 className='font-extrabold text-xl mb-4'>Buttons</h1>
 			<div className='flex flex-col bg-white rounded-xl py-6 shadow-md'>
 				<h1 className='ml-6 my-6 font-bold'>Solid</h1>
 				<div className='flex flex-col items-center justify-center text-white'>
 					<button
-						className={`bg-black px-14 py-3 mb-6 ${
+						className={`bg-black px-14 py-3 mb-6 text-white ${
 							btnStyle === 'solid' ? 'btn-select' : ''
 						}`}
 						style={{ backgroundColor: btnColor, color: btnFontColor }}
@@ -40,7 +40,7 @@ const Buttons = (props) => {
 						Your Link Here
 					</button>
 					<button
-						className={`bg-black px-14 py-3 mb-6 rounded-xl ${
+						className={`bg-black px-14 py-3 mb-6 rounded-xl text-white ${
 							btnStyle === 'solid-round' ? 'btn-select' : ''
 						}`}
 						style={{ backgroundColor: btnColor, color: btnFontColor }}
@@ -52,7 +52,7 @@ const Buttons = (props) => {
 						Your Link Here
 					</button>
 					<button
-						className={`bg-black px-14 py-3 mb-6 rounded-full ${
+						className={`bg-black px-14 py-3 mb-6 rounded-full text-white ${
 							btnStyle === 'solid-rounder' ? 'btn-select' : ''
 						}`}
 						style={{ backgroundColor: btnColor, color: btnFontColor }}
@@ -118,7 +118,7 @@ const Buttons = (props) => {
 						Your Link Here
 					</button>
 					<button
-						className={`border border-black px-14 py-3 mb-6 btn-shadow rounded-xl ${
+						className={`border border-black px-14 py-3 mb-6 btn-shadow rounded-xl text-white ${
 							btnStyle === 'shadowed-round' ? 'btn-select' : ''
 						}`}
 						style={{ backgroundColor: btnColor, color: btnFontColor }}
@@ -130,7 +130,7 @@ const Buttons = (props) => {
 						Your Link Here
 					</button>
 					<button
-						className={`border border-black px-14 py-3 mb-6 btn-shadow rounded-full ${
+						className={`border border-black px-14 py-3 mb-6 btn-shadow rounded-full text-white ${
 							btnStyle === 'shadowed-rounder' ? 'btn-select' : ''
 						}`}
 						style={{ backgroundColor: btnColor, color: btnFontColor }}
@@ -146,9 +146,7 @@ const Buttons = (props) => {
 					<h1 className='mb-2 mt-4 font-bold'>Button Color</h1>
 					<div className='flex'>
 						<button
-							onClick={() => {
-								setShowBtnColorPicker(true);
-							}}
+							onClick={toggleBtnColorPicker}
 							className='mr-3 p-6 inline-flex rounded-md'
 							style={{ backgroundColor: btnColor, color: btnFontColor }}
 						>
@@ -164,7 +162,7 @@ const Buttons = (props) => {
 						/>
 					</div>
 					{showBtnColorPicker ? (
-						<BlockPicker
+						<SwatchesPicker
 							color={btnColor}
 							onChangeComplete={handleBtnColorChange}
 						/>
@@ -174,9 +172,7 @@ const Buttons = (props) => {
 					<h1 className='mb-2 mt-4 font-bold'>Button Font Color</h1>
 					<div className='flex'>
 						<button
-							onClick={() => {
-								setShowBtnFontColorPicker(true);
-							}}
+							onClick={toggleBtnFontColorPicker}
 							className='mr-3 p-6 inline-flex rounded-md'
 							style={{ backgroundColor: btnFontColor }}
 						>
@@ -192,7 +188,7 @@ const Buttons = (props) => {
 						/>
 					</div>
 					{showBtnFontColorPicker ? (
-						<BlockPicker
+						<SwatchesPicker
 							color={btnFontColor}
 							onChangeComplete={handleBtnFontColorChange}
 						/>

@@ -1,19 +1,19 @@
-import { BlockPicker } from 'react-color';
+import { SwatchesPicker } from 'react-color';
 
 const Background = (props) => {
 	const {
 		color,
 		bgColor,
-		setShowBgColorPicker,
 		showBgColorPicker,
 		handleBgColorChange,
 		handleBgInputChange,
-		handleBgInputBlur
+		handleBgInputBlur,
+		toggleBgColorPicker,
 	} = props;
 
 	return (
 		<>
-			<div className='p-4 font-sora'>
+			<div className='p-4 font-sora appear'>
 				<h1 className='font-extrabold text-xl mb-4'>Background</h1>
 				<div className='bg-white py-20 rounded-xl flex flex-col items-center justify-around shadow-md'>
 					<span className='outline outline-black p-3 rounded-xl'>
@@ -27,11 +27,9 @@ const Background = (props) => {
 						<h1 className='mb-2 mt-4 font-bold text-center'>
 							Background Color
 						</h1>
-						<div className='flex'>
+						<div className='flex justify-center'>
 							<button
-								onClick={() => {
-									setShowBgColorPicker(true);
-								}}
+								onClick={toggleBgColorPicker}
 								className='mr-3 p-6 inline-flex rounded-md'
 								style={{ backgroundColor: color }}
 							>
@@ -46,12 +44,12 @@ const Background = (props) => {
 								onBlur={handleBgInputBlur}
 							/>
 						</div>
-						{showBgColorPicker ? (
-							<BlockPicker
-								color={ bgColor}
+						{showBgColorPicker && (
+							<SwatchesPicker
+								color={bgColor}
 								onChangeComplete={handleBgColorChange}
 							/>
-						) : null}
+						)}
 						<p className='text-center mt-6'>
 							Need color inspo? Check{' '}
 							<span>

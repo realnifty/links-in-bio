@@ -7,7 +7,6 @@ import { DELETE_LINK } from '../../utils/mutations';
 import spinner from '../../images/spinner-dark.svg';
 
 const MyLinks = ({ links }) => {
-
 	const [deleteLinkId, setDeleteLinkId] = useState(null);
 
 	const [deleteLink, loading] = useMutation(DELETE_LINK, {
@@ -31,15 +30,14 @@ const MyLinks = ({ links }) => {
 	});
 
 	const handleDelete = async (linkId) => {
-
 		setDeleteLinkId(linkId);
 
 		try {
 			await deleteLink({
 				variables: {
-					id: linkId
-				}
-			})
+					id: linkId,
+				},
+			});
 		} catch (e) {
 			console.error(e);
 		}
@@ -62,9 +60,9 @@ const MyLinks = ({ links }) => {
 				links.map((link) => (
 					<div
 						key={link._id}
-						className='bg-white rounded-3xl p-6 mb-4 w-full shadow-sm flex flex-col'
+						className='bg-white rounded-3xl p-6 mb-4 w-full shadow-lg flex flex-col appear'
 					>
-						<div className=''>
+						<div className='h-full w-full'>
 							<h1 className='font-bold'>{link.title}</h1>
 							<p className='text-md overflow-auto'>{link.url}</p>
 						</div>
@@ -115,6 +113,6 @@ const MyLinks = ({ links }) => {
 				))}
 		</>
 	);
-}
+};
 
-export default MyLinks
+export default MyLinks;

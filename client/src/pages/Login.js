@@ -8,18 +8,18 @@ import logo from '../images/link.png';
 
 const Login = () => {
 	const navigate = useNavigate();
-	
+
 	const [fadeIn, setFadeIn] = useState(false);
 
 	useEffect(() => {
 		setFadeIn(true);
 	}, []);
-  
-  useEffect(() => {
-    if (Auth.loggedIn()) {
-      navigate('/dashboard');
-    }
-  }, [navigate]);
+
+	useEffect(() => {
+		if (Auth.loggedIn()) {
+			navigate('/dashboard');
+		}
+	}, [navigate]);
 
 	const [formState, setFormState] = useState({ username: '', password: '' });
 
@@ -44,7 +44,7 @@ const Login = () => {
 
 			Auth.login(data.login.token);
 			console.log(data);
-      navigate('/dashboard');
+			navigate('/dashboard');
 		} catch (e) {
 			console.error(e);
 		}
@@ -52,52 +52,57 @@ const Login = () => {
 
 	return (
 		<main className={`px-4 py-6 h-screen fade-in ${fadeIn ? 'visible' : ''}`}>
-			<div className="flex items-center">
-				<img className="h-8" src={logo} alt="linkify logo"></img>
-				<h1 className="font-unbounded text-xl">Linkify</h1>
+			<div
+				className='flex items-center'
+				onClick={() => {
+					navigate('/');
+				}}
+			>
+				<img className='h-8' src={logo} alt='linkify logo'></img>
+				<h1 className='font-unbounded text-xl'>Linkify</h1>
 			</div>
-			<h1 className="font-unbounded text-2xl font-extrabold py-4">
+			<h1 className='font-unbounded text-2xl font-extrabold py-4'>
 				Welcome back!
 			</h1>
 			<form onSubmit={handleFormSubmit}>
 				<input
-					className="bg-gray-200 p-3 mb-4 w-full rounded-full font-sora outline-gray-300"
-					type="username"
-					name="username"
-					id="username"
-					placeholder="Username"
+					className='bg-gray-200 p-3 mb-4 w-full rounded-full font-sora outline-gray-300'
+					type='username'
+					name='username'
+					id='username'
+					placeholder='Username'
 					value={formState.username}
 					onChange={handleChange}
 				/>
 				<input
-					className="bg-gray-200 p-3 w-full rounded-full font-sora outline-gray-300"
-					type="password"
-					name="password"
-					id="password"
-					placeholder="Password"
+					className='bg-gray-200 p-3 w-full rounded-full font-sora outline-gray-300'
+					type='password'
+					name='password'
+					id='password'
+					placeholder='Password'
 					value={formState.password}
 					onChange={handleChange}
 				/>
 				{error && (
-					<div className="font-sora text-red-600 pt-4">Login failed</div>
+					<div className='font-sora text-red-600 pt-4'>Login failed</div>
 				)}
 				{error && error.message === 'User not found.' ? (
-					<div className="font-sora text-red-600 pt-4">User not found</div>
+					<div className='font-sora text-red-600 pt-4'>User not found</div>
 				) : null}
 				{error && error.message === 'Incorrect credentials.' ? (
-					<div className="font-sora text-red-600 pt-4">
+					<div className='font-sora text-red-600 pt-4'>
 						Incorrect credentials
 					</div>
 				) : null}
-				<p className="font-sora pt-4">
+				<p className='font-sora pt-4'>
 					Don't have an account? Sign up{' '}
-					<span className="text-indigo-400 underline">
-						<Link to="/signup">here.</Link>
+					<span className='text-indigo-400 underline'>
+						<Link to='/signup'>here.</Link>
 					</span>
 				</p>
 				<button
-					className="font-unbounded font-extrabold text-white text-md p-3 mt-4 bg-indigo-400 rounded-full"
-					type="submit"
+					className='font-unbounded font-extrabold text-white text-md p-3 mt-4 bg-indigo-400 rounded-full'
+					type='submit'
 				>
 					Log in
 				</button>

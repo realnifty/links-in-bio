@@ -15,14 +15,14 @@ const Dashboard = () => {
 
 	const location = useLocation();
 
-  const { data: userData } = useQuery(GET_ME);
+	const { data: userData } = useQuery(GET_ME);
 
 	const [linkFormVisible, setLinkFormVisible] = useState(false);
-	
+
 	const [fadeIn, setFadeIn] = useState(false);
 
 	const [activeTab, setActiveTab] = useState('links');
-	
+
 	const toggleLinkForm = () => {
 		setLinkFormVisible(!linkFormVisible);
 	};
@@ -44,7 +44,6 @@ const Dashboard = () => {
 			setActiveTab('settings');
 		}
 	}, [setActiveTab, location]);
-	
 
 	useEffect(() => {
 		if (!Auth.loggedIn()) {
@@ -56,7 +55,7 @@ const Dashboard = () => {
 		<main
 			className={`min-h-screen fade-in bg-slate-200 ${fadeIn ? 'visible' : ''}`}
 		>
-			<div className='sticky inset-0'>
+			<div className='sticky inset-0 z-20 appear'>
 				<div className='flex justify-between px-4 items-center py-2 divide-under bg-white'>
 					<img className='h-12' src={logo} alt='linkify logo' />
 					<div className='px-4 py-3 border border-gray-300 rounded-full'>
@@ -106,9 +105,9 @@ const Dashboard = () => {
 			</div>
 			<div className='overflow-scroll'>
 				{activeTab === 'links' && (
-					<div className='flex flex-col items-center justify-center p-4 font-sora'>
+					<div className='flex flex-col items-center justify-center p-4 font-sora appear'>
 						<button
-							className='bg-indigo-400 text-white w-full py-2 mb-4 rounded-full flex justify-center'
+							className='bg-indigo-400 text-white w-full py-2 mb-4 rounded-full flex justify-center shadow-lg'
 							onClick={toggleLinkForm}
 						>
 							<i className='bi bi-plus-circle pr-2'></i>

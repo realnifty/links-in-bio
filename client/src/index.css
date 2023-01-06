@@ -4,6 +4,43 @@
 @tailwind components;
 @tailwind utilities;
 
+*::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes spin-left {
+  from {
+    transform: rotateY(-90deg);
+  }
+  to {
+    transform: rotateY(90deg);
+  }
+}
+
+@keyframes spin-right {
+  from {
+    transform: rotateY(90deg);
+  }
+  to {
+    transform: rotateY(-90deg);
+  }
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.appear {
+  animation: appear 0.5s;
+}
+
 .divide-under {
   border-bottom: 1px solid #d1d5db;
 }
@@ -24,18 +61,6 @@
   transform: translateX(0);
 }
 
-.link-form {
-  opacity: 0;
-  transform: translateX(100%);
-  transition: opacity 0.7s, transform 0.5s;
-  display: none;
-}
-
-.link-form-visible {
-  opacity: 1;
-  transform: translateX(0);
-}
-
 .btn-shadow {
   box-shadow: 6px 6px black;;
 }
@@ -47,4 +72,16 @@
 
 input, textarea {
 text-decoration: blink;
+}
+
+.image-animate-left {
+  animation: spin-left 4s linear infinite alternate;
+  perspective: 200px;
+  rotate: 5deg;
+}
+
+.image-animate-right {
+  animation: spin-right 4s linear infinite alternate;
+  perspective: 200px;
+  rotate: -5deg;
 }

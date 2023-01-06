@@ -13,7 +13,7 @@ const LinkForm = (props) => {
 
 	const [url, setUrl] = useState('');
 
-	const [addLink, loading ] = useMutation(ADD_LINK, {
+	const [addLink, loading] = useMutation(ADD_LINK, {
 		update(cache, { data: { addLink } }) {
 			try {
 				// could potentially not exist yet, so wrap in a try...catch
@@ -31,17 +31,17 @@ const LinkForm = (props) => {
 					query: GET_ME,
 					data: { links: [...links, addLink] },
 				});
-			};
+			}
 		},
 	});
 
 	const handleTitleChange = (e) => {
 		setTitle(e.target.value);
-  };
-  
-  const handleUrlChange = (e) => {
-    setUrl(e.target.value);
-  };
+	};
+
+	const handleUrlChange = (e) => {
+		setUrl(e.target.value);
+	};
 
 	const handleFormSubmit = async (e) => {
 		e.preventDefault();
@@ -51,8 +51,8 @@ const LinkForm = (props) => {
 				variables: { title, url },
 				onCompleted: () => {
 					toggleLinkForm();
-				}
-      });
+				},
+			});
 
 			// clear form value
 			setTitle('');
@@ -60,12 +60,12 @@ const LinkForm = (props) => {
 		} catch (e) {
 			console.error(e);
 		}
-  };
+	};
 
 	return (
 		<div
-			className={`bg-white rounded-3xl p-6 mb-4 shadow-sm flex flex-col ${
-				linkFormVisible ? 'link-form-visible' : 'link-form'
+			className={`bg-white rounded-3xl p-6 mb-4 shadow-lg flex flex-col ${
+				linkFormVisible ? 'appear' : 'hidden'
 			}`}
 		>
 			<div className='flex justify-between'>
@@ -102,7 +102,15 @@ const LinkForm = (props) => {
 					type='submit'
 					className='font-lib text-white text-md py-1 px-3 bg-indigo-400 rounded-full'
 				>
-					{ loading.loading === false ? <span>Add</span> : <img className='animate-spin h-6' src={spinner} alt='spinner loading'></img>}
+					{loading.loading === false ? (
+						<span>Add</span>
+					) : (
+						<img
+							className='animate-spin h-6'
+							src={spinner}
+							alt='spinner loading'
+						></img>
+					)}
 				</button>
 			</div>
 		</div>

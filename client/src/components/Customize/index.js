@@ -43,6 +43,10 @@ const Customize = () => {
 		}
 	}, [userData]);
 
+	const toggleBgColorPicker = () => {
+		setShowBgColorPicker(!showBgColorPicker);
+	};
+
 	const handleBgColorChange = async (bgColor) => {
 		try {
 			await updateBgColor({
@@ -93,6 +97,10 @@ const Customize = () => {
 	};
 
 	const [showBtnColorPicker, setShowBtnColorPicker] = useState(false);
+
+	const toggleBtnColorPicker = () => {
+		setShowBtnColorPicker(!showBtnColorPicker);
+	};
 
 	const [btnColor, setBtnColor] = useState('#000000');
 
@@ -145,6 +153,10 @@ const Customize = () => {
 
 	const [showBtnFontColorPicker, setShowBtnFontColorPicker] = useState(false);
 
+	const toggleBtnFontColorPicker = () => {
+		setShowBtnFontColorPicker(!showBtnFontColorPicker);
+	};
+
 	const [btnFontColor, setBtnFontColor] = useState('#000000');
 
 	useEffect(() => {
@@ -184,10 +196,10 @@ const Customize = () => {
 	const [profilePicture, setProfilePicture] = useState(null);
 
 	const fileInputRef = useRef();
-	
+
 	const handleUploadClick = () => {
 		fileInputRef.current.click();
-	}
+	};
 
 	const handleFileInputChange = (e) => {
 		const file = e.target.files[0];
@@ -203,7 +215,7 @@ const Customize = () => {
 			console.error(e);
 		}
 	};
-	
+
 	const previewFile = (file) => {
 		const reader = new FileReader();
 		reader.readAsDataURL(file);
@@ -213,35 +225,46 @@ const Customize = () => {
 		};
 	};
 
-
 	return (
 		<>
-			<div className='p-4 font-sora'>
+			<div className='p-4 font-sora appear'>
 				<h1 className='font-extrabold text-xl mb-4'>Profile</h1>
 				<div className='flex flex-col bg-white rounded-xl shadow-md'>
 					<div className='flex items-center justify-between pt-6 px-6'>
 						<img
 							className='h-28 w-28 rounded-full'
-							src={profilePicture === null ? (userData?.me?.profilePicture ? userData?.me?.profilePicture : defaultPFP) : profilePicture}
+							src={
+								profilePicture === null
+									? userData?.me?.profilePicture
+										? userData?.me?.profilePicture
+										: defaultPFP
+									: profilePicture
+							}
 							alt='default profile'
 						/>
 						<div className='flex flex-col font-bold'>
 							<input
-									ref={fileInputRef}
-									name='image'
-									type='file'
-									accept='image/*'
-									style={{ display: 'none' }}
-									onChange={handleFileInputChange}
-								/>
-								<button className='bg-indigo-400 px-3 py-2 rounded-full mb-3 text-white' onClick={handleUploadClick}>
-									Select image
-								</button>
-							<button className='bg-gray-300 px-3 py-2 rounded-full' onClick={() => {
-								setProfilePicture(null);
-								handleUpload(null);
-								window.location.reload();
-							}}>
+								ref={fileInputRef}
+								name='image'
+								type='file'
+								accept='image/*'
+								style={{ display: 'none' }}
+								onChange={handleFileInputChange}
+							/>
+							<button
+								className='bg-indigo-400 px-3 py-2 rounded-full mb-3 text-white'
+								onClick={handleUploadClick}
+							>
+								Select image
+							</button>
+							<button
+								className='bg-gray-300 px-3 py-2 rounded-full'
+								onClick={() => {
+									setProfilePicture(null);
+									handleUpload(null);
+									window.location.reload();
+								}}
+							>
 								Remove image
 							</button>
 						</div>
@@ -279,11 +302,11 @@ const Customize = () => {
 			</div>
 			<Background
 				color={bgColor}
-				setShowBgColorPicker={setShowBgColorPicker}
 				showBgColorPicker={showBgColorPicker}
 				handleBgColorChange={handleBgColorChange}
 				handleBgInputChange={handleBgInputChange}
 				handleBgInputBlur={handleBgInputBlur}
+				toggleBgColorPicker={toggleBgColorPicker}
 			/>
 			<Buttons
 				btnColor={btnColor}
@@ -301,6 +324,8 @@ const Customize = () => {
 				handleBtnFontColorChange={handleBtnFontColorChange}
 				handleBtnFontInputChange={handleBtnFontInputChange}
 				handleBtnFontInputBlur={handleBtnFontInputBlur}
+				toggleBtnColorPicker={toggleBtnColorPicker}
+				toggleBtnFontColorPicker={toggleBtnFontColorPicker}
 			/>
 			<Fonts />
 		</>

@@ -1,12 +1,16 @@
 import { Link } from 'react-router-dom';
 
-import logo from '../images/link.png'
+import logo from '../images/link.png';
 
-import Footer from '../components/Footer'
+import Footer from '../components/Footer';
+
+import chef from '../images/chef.png';
+import gamer from '../images/gamer.png';
+import singer from '../images/singer.png';
 
 const Home = () => {
-  return (
-		<main className='px-4 py-6 bg-indigo-400 h-screen'>
+	return (
+		<main className='px-4 py-6 bg-indigo-400 h-full appear'>
 			<div className='ActionBar flex justify-between p-4 items-center bg-white rounded-full'>
 				<div className='flex items-center'>
 					<img className='h-8' src={logo} alt='linkify logo'></img>
@@ -30,23 +34,30 @@ const Home = () => {
 					place with Linkify. Create a custom link to share with anyone.
 				</p>
 			</section>
-			<section className='font-unbounded flex flex-col pt-10'>
+			<div className='text-center text-indigo-200 flex items-center justify-center py-10 '>
 				<img
-					className='h-20 w-20 bg-indigo-200 rounded-full mx-auto'
-					src={logo}
-					alt='linkify logo'
+					className='rounded-3xl h-3/4 w-3/4 image-animate-left'
+					src={chef}
+					alt='chef example linkify'
 				/>
-				<div className='text-center text-indigo-200 pt-5 flex flex-col'>
-					<button className='bg-indigo-800 rounded-full p-3 my-3'>Join</button>
-					<button className='bg-indigo-800 rounded-full p-3 my-3'>
-						Linkify
-					</button>
-					<button className='bg-indigo-800 rounded-full p-3 my-3'>Today</button>
-				</div>
-			</section>
+			</div>
+			<div className='text-center text-indigo-200 flex items-center justify-center py-10'>
+				<img
+					className='rounded-3xl h-3/4 w-3/4 image-animate-right'
+					src={gamer}
+					alt='gamer example linkify'
+				/>
+			</div>
+			<div className='text-center text-indigo-200 flex items-center justify-center pb-10'>
+				<img
+					className='rounded-3xl h-3/4 w-3/4 image-animate-left'
+					src={singer}
+					alt='singer example linkify'
+				/>
+			</div>
 			<Footer />
 		</main>
 	);
-}
+};
 
-export default Home
+export default Home;

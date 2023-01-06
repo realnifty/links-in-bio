@@ -1,7 +1,7 @@
-import logo from '../images/link.png'
+import logo from '../images/link.png';
 
 const Privacy = () => {
-  return (
+	return (
 		<main>
 			<div className='flex items-center justify-center p-4 border border-b-1'>
 				<img className='sticky h-10' src={logo} alt='' />
@@ -96,12 +96,15 @@ const Privacy = () => {
 				<h1 className='font-unbounded text-lg mt-6'>Contact Us</h1>
 				<p className='font-sora text-sm my-4'>
 					If you have any questions or concerns about our privacy practices,
-					please contact us <a className='text-indigo-400 underline' href='mailto:lovecore@pm.me'>here</a>
+					please contact us{' '}
+					<a className='text-indigo-400 underline' href='mailto:lovecore@pm.me'>
+						here
+					</a>
 				</p>
 			</div>
 			<p className='font-sora text-sm mx-4 my-10'>Effective Date: 01/04/23</p>
 		</main>
 	);
-}
+};
 
-export default Privacy
+export default Privacy;
