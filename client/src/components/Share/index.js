@@ -6,7 +6,7 @@ const Share = (props) => {
 	const [copied, setCopied] = useState(false);
 
 	const copyToClipboard = () => {
-		navigator.clipboard.writeText(`linkify.mobi/${userData?.me?.username || user?.username}`);
+		navigator.clipboard.writeText(`https://www.linkify.mobi/${userData?.me?.username || user?.username}`);
 		setCopied(true);
 	};
 
