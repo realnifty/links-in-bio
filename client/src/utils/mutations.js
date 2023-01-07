@@ -98,3 +98,11 @@ export const UPDATE_PROFILE_PICTURE = gql`
 		}
 	}
 `;
+
+export const DELETE_ME = gql`
+	mutation DeleteMe {
+		deleteMe {
+			_id
+		}
+	}
+`;
