@@ -13,6 +13,8 @@ import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Profile from './pages/Profile';
 import Privacy from './pages/Privacy';
+import About from './pages/About';
+import ToS from './pages/ToS';
 
 import Customize from './components/Customize';
 import Settings from './components/Settings';
@@ -57,6 +59,8 @@ function App() {
 					<Route path='/signup' element={<Signup />} />
 					<Route path='/login' element={<Login />} />
 					<Route path='/privacy' element={<Privacy />} />
+					<Route path='/about' element={<About />} />
+					<Route path='/terms' element={<ToS />} />
 					<Route path='/dashboard' element={<Dashboard />}>
 						<Route path='customize' element={<Customize />} />
 						<Route path='settings' element={<Settings />} />

@@ -4,9 +4,9 @@ const Footer = () => {
 	const navigate = useNavigate();
 
 	const list = [
-		{ id: '1', text: 'About', nav: '' },
+		{ id: '1', text: 'About', nav: 'about' },
 		{ id: '2', text: 'Privacy', nav: 'privacy' },
-		{ id: '3', text: 'ToS', nav: '' },
+		{ id: '3', text: 'ToS', nav: 'terms' },
 		{ id: '4', text: 'Cookies', nav: '' },
 	];
 

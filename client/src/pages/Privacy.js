@@ -18,7 +18,7 @@ const Privacy = () => {
 				</p>
 				<p>
 					This privacy notice explains how we collect, use, and share your
-					personal information when you use our web application.
+					personal information when you use Linkify.
 				</p>
 			</div>
 			<div className='px-4'>
@@ -49,7 +49,7 @@ const Privacy = () => {
 				</h1>
 				<p className='font-sora text-sm my-4'>
 					We use the personal information that we collect from you to provide
-					and improve our web application.
+					and improve Linkify.
 				</p>
 			</div>
 			<div className='px-4'>

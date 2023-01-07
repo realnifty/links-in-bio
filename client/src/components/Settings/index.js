@@ -5,6 +5,10 @@ const Settings = () => {
 
   const navigate = useNavigate();
 
+  const handleClick = () => {
+    window.open('mailto:your@email.com');
+  }
+
   return (
     <div className="p-4 font-sora appear">
       <h1 className="mb-4 font-extrabold text-xl mb-4">Account</h1>
@@ -17,10 +21,10 @@ const Settings = () => {
       </div>
       <h1 className="my-4 font-extrabold text-xl">Support</h1>
       <div className="text-md flex flex-col items-start bg-white rounded-xl shadow-md divide-y-2">
-        <button className="py-4 w-full text-start"><span><i className="ml-4 bi bi-envelope mr-2"></i></span>Contact</button>
+        <button className="py-4 w-full text-start" onClick={handleClick} href='mailto:lovecore@pm.me'><span><i className="ml-4 bi bi-envelope mr-2"></i></span>Contact</button>
         <button className="py-4 w-full text-start"><span><i className="ml-4 bi bi-info-circle mr-2"></i></span>Help topics</button>
         <button className="py-4 w-full text-start"><span><i className="ml-4 bi bi-chat-heart mr-2"></i></span>Submit feedback</button>
-        <button className="py-4 w-full text-start" onClick={Auth.logout}><span><i className="ml-4 bi bi-question-circle mr-2"></i></span>FAQs</button>
+        <button className="py-4 w-full text-start" onClick={() => {navigate('/terms')}}><span><i className="ml-4 bi bi-journal-text mr-2"></i></span>Terms of Service</button>
         <button className="py-4 w-full text-start" onClick={() => {navigate('/privacy')}}><span><i className="ml-4 bi bi-file-lock mr-2"></i></span>Privacy Notice</button>
       </div>
     </div >
