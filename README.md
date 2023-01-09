@@ -39,7 +39,7 @@ Shareable profile
 
 ## Usage
 
-Navigate to the [website](https://nifty-linkify.herokuapp.com/) to view create an account, edit your profile, add your links, and share your profile with anyone.
+Navigate to the [website](https://www.linkify.mobi/) to view create an account, edit your profile, add your links, and share your profile with anyone.
 
 ## Installation
 
