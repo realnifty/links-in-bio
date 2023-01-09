@@ -12,12 +12,12 @@ const Share = (props) => {
 
 	return (
 		<>
-      <div className={`bg-black opacity-50 h-screen w-screen fixed inset-1/2 -translate-x-1/2 -translate-y-1/2 ${
+      <div className={`bg-black opacity-50 h-screen w-screen absolute inset-0 z-30 ${
 					showShare ? '' : 'hidden'
 				}`}>
       </div>
 			<div
-				className={`bg-white w-2/3 h-28 p-4 font-sora rounded-2xl absolute inset-1/2 -translate-x-1/2  share-appear z-10 ${
+				className={`bg-white w-2/3 md:w-80 xl:w-1/6 h-28 p-4 font-sora rounded-2xl absolute inset-1/2 -translate-x-1/2  share-appear z-40 ${
 					showShare ? '' : 'hidden'
 				}`}
 			>

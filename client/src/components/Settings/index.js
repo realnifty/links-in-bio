@@ -32,7 +32,7 @@ const Settings = () => {
   }
 
   return (
-    <div className="p-4 font-sora appear">
+    <div className="p-4 font-sora appear md:w-2/3 md:mx-auto xl:w-1/3 xl:mx-auto">
       <h1 className="mb-4 font-extrabold text-xl mb-4">Account</h1>
       <div className="text-md flex flex-col bg-white rounded-xl shadow-md divide-y-2">
         <button className="py-4 w-full text-start"><span><i className="ml-4 bi bi-person mr-2"></i></span>My account</button>
@@ -41,7 +41,7 @@ const Settings = () => {
         <button className="py-4 w-full text-start" onClick={Auth.logout}><span><i className="ml-4 bi bi-box-arrow-in-left mr-2"></i></span>Log out</button>
         <button className="py-4 w-full text-start" onClick={toggleWarning}><span><i className="ml-4 bi bi-person-x-fill mr-2"></i></span>Delete account</button>
         {showWarning && (
-									<div className='p-4'>
+									<div className='p-4 bg-white rounded-xl appear-below'>
 										<p className='text-base mt-1 mb-2 text-red-600'>
 											Are you sure you want to delete your account?
 										</p>

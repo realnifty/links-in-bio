@@ -42,7 +42,7 @@ const Profile = () => {
 		<>
 			{user.username ? (
 				<main
-					className={`min-h-screen p-6 fade-in ${fadeIn ? 'visible' : ''}`}
+					className={`min-h-screen p-6 md:p-10 fade-in ${fadeIn ? 'visible' : ''}`}
 					style={{ backgroundColor: user.backgroundColor }}
 				>
 					<Share
@@ -52,7 +52,7 @@ const Profile = () => {
 					/>
 					<div
 						className={`flex ${
-							Auth.loggedIn() ? 'justify-between' : 'justify-end'
+							Auth.loggedIn() ? 'justify-between xl:justify-evenly' : 'justify-end'
 						}`}
 					>
 						{Auth.loggedIn() && (
@@ -73,26 +73,26 @@ const Profile = () => {
 						</div>
 					</div>
 					<div className='flex flex-col items-center justify-center'>
-						<div className='font-sora mb-4'>
+						<div className='font-sora mb-4 xl:mb-6'>
 							<img
-								className='h-24 w-24 mx-auto rounded-full'
+								className='h-24 md:h-28 xl:h-32 mx-auto rounded-full'
 								src={user?.profilePicture ? user?.profilePicture : defaultPFP}
 								alt='default profile'
 							/>
 							<h1
-								className='font-bold text-xl text-center mt-4 mb-2'
+								className='font-bold text-xl text-center mt-4 mb-2 xl:text-2xl xl:mt-6'
 								style={{ color: user?.profileFontColor }}
 							>
 								{user.displayName}
 							</h1>
 							<p
-								className='text-center'
+								className='text-center xl:text-lg'
 								style={{ color: user?.profileFontColor }}
 							>
 								{user.biography}
 							</p>
 						</div>
-						<div className='flex flex-col w-full text-center font-sora'>
+						<div className='flex flex-col w-full md:w-2/3 xl:w-1/3 text-center font-sora'>
 							{user.links?.map((link) => (
 								<a
 									key={link._id}

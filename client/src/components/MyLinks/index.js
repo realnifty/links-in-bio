@@ -60,7 +60,7 @@ const MyLinks = ({ links }) => {
 				links.map((link) => (
 					<div
 						key={link._id}
-						className='bg-white rounded-3xl p-6 mb-4 w-full shadow-lg flex flex-col appear'
+						className='bg-white rounded-3xl p-6 mb-4 w-full md:w-2/3 xl:w-1/3 shadow-lg flex flex-col appear'
 					>
 						<div className='h-full w-full'>
 							<h1 className='font-bold'>{link.title}</h1>

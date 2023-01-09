@@ -11,8 +11,8 @@ const Footer = () => {
 	];
 
 	return (
-		<footer className='pt-5'>
-			<ul className='flex justify-center text-indigo-800 text-sm font-unbounded'>
+		<footer className='py-6 '>
+			<ul className='flex justify-center text-indigo-800 text-sm md:text-lg font-unbounded'>
 				{list.map((item) => (
 					<li
 						onClick={() => navigate(`/${item.nav}`)}

@@ -64,7 +64,7 @@ const LinkForm = (props) => {
 
 	return (
 		<div
-			className={`bg-white rounded-3xl p-6 mb-4 shadow-lg flex flex-col ${
+			className={`bg-white rounded-3xl w-full xl:w-1/3 p-6 mb-4 shadow-lg flex flex-col ${
 				linkFormVisible ? 'appear' : 'hidden'
 			}`}
 		>
@@ -74,7 +74,7 @@ const LinkForm = (props) => {
 					<i className='bi bi-x-lg text-xl'></i>
 				</button>
 			</div>
-			<form id='addLinkForm' onSubmit={handleFormSubmit}>
+			<form className='xl:flex xl:flex-col' id='addLinkForm' onSubmit={handleFormSubmit}>
 				<input
 					className='font-bold outline-none'
 					type='text'

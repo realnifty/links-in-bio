@@ -48,12 +48,27 @@
   }
 }
 
+@keyframes appear-below {
+  from {
+    height: 0%;
+    opacity: 0;
+  }
+  to {
+    height: 100%;
+    opacity: 1;
+  }
+}
+
 .appear {
   animation: appear 0.5s;
 }
 
 .share-appear {
   animation: share-appear 0.5s;
+}
+
+.appear-below {
+  animation: appear-below 0.5s;
 }
 
 .divide-under {
@@ -99,4 +114,8 @@ text-decoration: blink;
   animation: spin-right 4s linear infinite alternate;
   perspective: 200px;
   rotate: -5deg;
+}
+
+.hero-img {
+  height: 500px;
 }

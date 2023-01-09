@@ -22,10 +22,10 @@ const Buttons = (props) => {
 	} = props;
 
 	return (
-		<div className='p-4 font-sora appear'>
+		<div className='p-4 font-sora appear md:w-2/3 md:mx-auto xl:w-1/3 xl:mx-auto'>
 			<h1 className='font-extrabold text-xl mb-4'>Buttons</h1>
 			<div className='flex flex-col bg-white rounded-xl py-6 shadow-md'>
-				<h1 className='ml-6 my-6 font-bold'>Solid</h1>
+				<h1 className='font-bold mb-6 text-center xl:mx-auto'>Solid</h1>
 				<div className='flex flex-col items-center justify-center text-white'>
 					<button
 						className={`bg-black px-14 py-3 mb-6 text-white ${
@@ -64,7 +64,7 @@ const Buttons = (props) => {
 						Your Link Here
 					</button>
 				</div>
-				<h1 className='ml-6 my-6 font-bold'>Outlined</h1>
+				<h1 className='font-bold mb-6 text-center xl:mx-auto'>Outlined</h1>
 				<div className='flex flex-col items-center justify-center'>
 					<button
 						className={`border border-black px-14 py-3 mb-6 ${
@@ -103,7 +103,7 @@ const Buttons = (props) => {
 						Your Link Here
 					</button>
 				</div>
-				<h1 className='ml-6 my-6 font-bold'>Shadowed</h1>
+				<h1 className='font-bold mb-6 text-center xl:mx-auto'>Shadowed</h1>
 				<div className='flex flex-col items-center justify-center text-white'>
 					<button
 						className={`border border-black px-14 py-3 mb-6 btn-shadow ${

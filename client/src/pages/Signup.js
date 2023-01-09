@@ -62,18 +62,18 @@ const Signup = () => {
 	
 
 	return (
-		<main className={`px-4 py-6 h-screen fade-in ${fadeIn ? 'visible' : ''}`}>
+		<main className={`px-4 py-6 h-screen fade-in xl:flex xl:flex-col xl:items-center xl:justify-center md:flex md:flex-col md:items-center md:justify-center ${fadeIn ? 'visible' : ''}`}>
 			<div className='flex items-center' onClick={() => {navigate('/')}}>
-				<img className='h-8' src={logo} alt='linkify logo'></img>
-				<h1 className='font-unbounded text-xl'>Linkify</h1>
+				<img className='h-8 md:h-10 xl:h-12' src={logo} alt='linkify logo'></img>
+				<h1 className='font-unbounded text-xl md:text-2xl xl:text-3xl'>Linkify</h1>
 			</div>
-			<h1 className='font-unbounded text-2xl font-extrabold py-4'>
+			<h1 className='font-unbounded text-2xl font-extrabold py-4 md:text-3xl xl:py-6 xl:text-4xl'>
 				Create an account
 			</h1>
-			<p className='font-sora pb-4'>
+			<p className='font-sora pb-4 xl:pb-6'>
 				Choose a username. You can change it later if you'd like.
 			</p>
-			<form onSubmit={handleFormSubmit}>
+			<form className='md:w-2/3 xl:w-2/3' onSubmit={handleFormSubmit}>
 				<input
 					className='bg-gray-200 p-3 mb-4 w-full rounded-full font-sora outline-gray-300'
 					type='username'
@@ -116,18 +116,18 @@ const Signup = () => {
 				{error && (
 					<div className='font-sora text-red-600 pt-4'>Sign up failed</div>
 				)}
-				<p className='font-sora pt-4'>
+				<p className='font-sora pt-4 xl:pt-6'>
 					By creating your account you agree to the Terms of Service and our
 					Privacy Notice.
 				</p>
-				<p className='font-sora pt-4'>
+				<p className='font-sora pt-4 xl:pt-6'>
 					Already have an account? Log in{' '}
 					<span className='text-indigo-400 underline'>
 						<Link to='/login'>here.</Link>
 					</span>
 				</p>
 				<button
-					className='font-unbounded font-extrabold text-white text-md p-3 mt-4 bg-indigo-400 rounded-full'
+					className='font-unbounded font-extrabold text-white text-md p-3 mt-4 xl:mt-6 bg-indigo-400 rounded-full'
 					type='submit'
 				>
 					Create account

@@ -13,7 +13,7 @@ const Background = (props) => {
 
 	return (
 		<>
-			<div className='p-4 font-sora appear'>
+			<div className='p-4 font-sora appear md:w-2/3 md:mx-auto xl:w-1/3 xl:mx-auto'>
 				<h1 className='font-extrabold text-xl mb-4'>Background</h1>
 				<div className='bg-white py-20 rounded-xl flex flex-col items-center justify-around shadow-md'>
 					<span className='outline outline-black p-3 rounded-xl'>

@@ -60,7 +60,7 @@ const Dashboard = () => {
 			className={`min-h-screen fade-in bg-slate-200 relative ${fadeIn ? 'visible' : ''}`}
 		>
 			<div className='sticky inset-0 z-20 appear'>
-				<div className='flex justify-between px-4 items-center py-2 divide-under bg-white'>
+				<div className='flex justify-between px-4 xl:px-40 items-center py-2 divide-under bg-white'>
 					<img className='h-12' src={logo} alt='linkify logo' />
 					<div className='px-4 py-3 border border-gray-300 rounded-full'>
 						<button
@@ -119,9 +119,9 @@ const Dashboard = () => {
 			</div>
 			<div className='overflow-scroll'>
 				{activeTab === 'links' && (
-					<div className='flex flex-col items-center justify-center p-4 font-sora appear'>
+					<div className='flex flex-col items-center justify-center px-4 font-sora appear'>
 						<button
-							className='bg-indigo-400 text-white w-full py-2 mb-4 rounded-full flex justify-center shadow-lg'
+							className='bg-indigo-400 text-white w-full md:w-2/3 xl:w-1/3 py-2 xl:my-4 mb-4 my-4 rounded-full flex justify-center shadow-lg'
 							onClick={toggleLinkForm}
 						>
 							<i className='bi bi-plus-circle pr-2'></i>

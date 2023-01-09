@@ -59,7 +59,7 @@ const Fonts = () => {
 	};
 
 	return (
-		<div className='p-4 font-sora appear'>
+		<div className='p-4 font-sora appear md:w-2/3 md:mx-auto xl:w-1/3 xl:mx-auto'>
 			<h1 className='font-extrabold text-xl mb-4'>Fonts</h1>
 			<div className='flex flex-col bg-white rounded-xl py-6 shadow-md'>
 				<div className='flex flex-col items-center'>

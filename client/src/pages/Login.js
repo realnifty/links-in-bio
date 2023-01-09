@@ -51,20 +51,20 @@ const Login = () => {
 	};
 
 	return (
-		<main className={`px-4 py-6 h-screen fade-in ${fadeIn ? 'visible' : ''}`}>
+		<main className={`px-4 py-6 h-screen fade-in xl:flex xl:flex-col xl:items-center md:justify-center md:flex md:flex-col md:items-center md:justify-center ${fadeIn ? 'visible' : ''}`}>
 			<div
 				className='flex items-center'
 				onClick={() => {
 					navigate('/');
 				}}
 			>
-				<img className='h-8' src={logo} alt='linkify logo'></img>
-				<h1 className='font-unbounded text-xl'>Linkify</h1>
+				<img className='h-8 md:h-10 xl:h-12' src={logo} alt='linkify logo'></img>
+				<h1 className='font-unbounded text-xl md:text-2xl xl:text-3xl'>Linkify</h1>
 			</div>
-			<h1 className='font-unbounded text-2xl font-extrabold py-4'>
+			<h1 className='font-unbounded text-2xl font-extrabold py-4 xl:py-6 xl:text-4xl'>
 				Welcome back!
 			</h1>
-			<form onSubmit={handleFormSubmit}>
+			<form className='md:w-1/2' onSubmit={handleFormSubmit}>
 				<input
 					className='bg-gray-200 p-3 mb-4 w-full rounded-full font-sora outline-gray-300'
 					type='username'
